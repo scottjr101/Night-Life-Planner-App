@@ -1,10 +1,10 @@
 body{
-    background-color: darkred;
+    background-color: yellowgreen;
 }
 header{
     text-align: center;
     font-size: 500%;
     font-family: Arial, Helvetica, sans-serif;
-    margin-top: 8%;
-    color: grey;
+    margin-top: 20px;
+    color: black;
 }
