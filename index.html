@@ -15,11 +15,16 @@
     <br>
     <form>
         <div class="form-group">
+            <label for="start-date-input">Start Date</label>
+            <input class="form-control" id="start-date-input" placeholder="2019-10-08" type="text">
             <label for="zip-code-input">Zip Code</label>
             <input class="form-control" id="zip-code-input" placeholder="30340" type="text">
+            <label for="radius-input">Radius(mi)</label>
+            <input class="form-control" id="radius-input" placeholder="10" type="text">
         </div>
         <button id="add-movie-btn">Submit</button>
     </form>
+    <br>
     <div id="movies-view"></div>
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
