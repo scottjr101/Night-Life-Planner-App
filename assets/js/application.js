@@ -17,7 +17,7 @@ $(document).on('DOMContentLoaded', () => {
     event.preventDefault();
 
 
-    let TMapikey = "niWpNmDtxtZVBhqzuUGm4GGBURVEEGyB";
+    let TMapikey = "f7iOI1K6ZSelrJQmQ9kZrXMGns1biEKR";
     //default postal code
     let TMpostCode = $("#zip-code-input").val().trim();
 
