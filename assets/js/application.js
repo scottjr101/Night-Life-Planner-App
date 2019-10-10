@@ -11,17 +11,26 @@ $(document).on('DOMContentLoaded', () => {
 
   $(document).ready(function(){
 
+    $("#add-movie-btn").on("click", (event)=>{
+
+    event.preventDefault();
+
+
     let apikey = "f7iOI1K6ZSelrJQmQ9kZrXMGns1biEKR";
     //default postal code
-    let TMpostCode = "30092";
+    let TMpostCode = $("#zip-code-input").val().trim();
 
-    let TMkeyword = "football";
-
-    let TMevents = "/discovery/v2/events";
+    let TMradius = $("#radius-input").val().trim()
+    
+    let TMkeyword = "concert";
+    
+    let TMevents = "/discovery/v2/attractions";
 
     let TMsuggest = "/discovery/v2/suggest";
 
-    let queryURL = `https://app.ticketmaster.com${TMevents}.json?apikey=${apikey}&countryCode=us`
+        console.log(TMradius)
+        console.log(TMpostCode)
+    let queryURL = `https://app.ticketmaster.com${TMsuggest}.json?apikey=${apikey}&postalCode=${TMpostCode}&radius=${TMradius}&keyword=${TMkeyword}`
 
     $.ajax({
         url: queryURL,
@@ -30,14 +39,22 @@ $(document).on('DOMContentLoaded', () => {
 
       }).then(function(response) {
         console.log(response);
-        let TM = response._embedded.events
+        let TM = response._embedded.attractions
 
         for (let a = 0; a < TM.length; a++){
             console.log(TM[a]);
             
+            let nDiv = $("<div>");
+            $("#local-events").append(nDiv);
+
+            let nImg = $("<img>");
+            nImg.attr("src", TM[a].images[0].url);
+
+            $(nDiv).append(nImg)
         }
+        
       });
 
-
+    })
 
 })
