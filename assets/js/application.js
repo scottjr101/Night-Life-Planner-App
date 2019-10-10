@@ -48,7 +48,7 @@ $("#add-event-btn").on("click", (event)=>{
     event.preventDefault();
 
 
-    let apikey = "f7iOI1K6ZSelrJQmQ9kZrXMGns1biEKR";
+    let TMapikey = "f7iOI1K6ZSelrJQmQ9kZrXMGns1biEKR";
     //default postal code
     let TMpostCode = $("#tm-zip-code-input").val().trim();
 
@@ -62,10 +62,10 @@ $("#add-event-btn").on("click", (event)=>{
 
         console.log(TMradius)
         console.log(TMpostCode)
-    let queryURL = `https://app.ticketmaster.com${TMsuggest}.json?apikey=${apikey}&postalCode=${TMpostCode}&radius=${TMradius}&keyword=${TMkeyword}`
+    let TMqueryURL = `https://app.ticketmaster.com${TMsuggest}.json?apikey=${TMapikey}&postalCode=${TMpostCode}&radius=${TMradius}&keyword=${TMkeyword}`
 
     $.ajax({
-        url: queryURL,
+        url: TMqueryURL,
         method: "GET",
         dataType: "json",
 
