@@ -28,7 +28,7 @@
                         <a href="#" class="grey-text" id="logout">Logout</a>
                       </li>
                       <li class="logged-in">
-                        <a href="#" class="grey-text modal-trigger" data-target="modal-create">Events</a>
+                        <a href="#" class="grey-text modal-trigger" data-target="modal-events">Events</a>
                       </li>
                       <li class="logged-out">
                         <a href="#" class="grey-text modal-trigger" data-target="modal-login">Login</a>
@@ -78,32 +78,25 @@
       <!-- Events Modal -->
   <div id="modal-events" class="modal">
         <div class="modal-content">
-          <h4>Login</h4><br />
-          <form id="movie-form">
+          <h4>Find Events</h4><br />
+          <form id="event-form">
             <div class="input-field">
                 <label for="start-date-input">Start Date</label>
-                <input class="form-control" id="start-date-input" placeholder="2019-10-08" type="text">
+                <input class="form-control" id="tm-start-date-input" placeholder="2019-10-08" type="text">
             </div>
             <div class="input-field">
                 <label for="zip-code-input">Zip Code</label>
-                <input class="form-control" id="zip-code-input" placeholder="30340" type="text">
+                <input class="form-control" id="tm-zip-code-input" placeholder="30340" type="text">
             </div>
             <div class="input-field">
                 <label for="radius-input">Radius(mi)</label>
-                <input class="form-control" id="radius-input" placeholder="10" type="text">
+                <input class="form-control" id="tm-radius-input" placeholder="10" type="text">
             </div>
-            <button class="btn yellow darken-2 z-depth-0">Login</button>
+            <button id="add-event-btn">Submit</button>
           </form>
         </div>
       </div>
 
-      <form>
-            <div class="form-group">
-               
-                
-            </div>
-            <button id="add-movie-btn">Submit</button>
-        </form>
         <div id="local-events">
 
         </div>

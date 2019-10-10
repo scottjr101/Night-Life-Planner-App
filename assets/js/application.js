@@ -11,16 +11,16 @@ $(document).on('DOMContentLoaded', () => {
 
   $(document).ready(function(){
 
-    $("#add-movie-btn").on("click", (event)=>{
+    $("#add-event-btn").on("click", (event)=>{
 
     event.preventDefault();
 
 
     let apikey = "f7iOI1K6ZSelrJQmQ9kZrXMGns1biEKR";
     //default postal code
-    let TMpostCode = $("#zip-code-input").val().trim();
+    let TMpostCode = $("#tm-zip-code-input").val().trim();
 
-    let TMradius = $("#radius-input").val().trim()
+    let TMradius = $("#tm-radius-input").val().trim();
     
     let TMkeyword = "concert";
     
