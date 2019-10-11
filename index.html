@@ -34,6 +34,9 @@
                       <li class="logged-in">
                             <a href="#" class="grey-text modal-trigger" data-target="modal-events">Events</a>
                         </li>
+                      <li class="logged-in">
+                            <a href="#" class="grey-text modal-trigger" data-target="modal-movies">Movies</a>
+                        </li>
                       <li class="logged-out">
                         <a href="#" class="grey-text modal-trigger" data-target="modal-login">Login</a>
                       </li>
@@ -80,7 +83,7 @@
         </div>
       </div>
     <!-- Events Modal -->
-    <div id="modal-events" class="modal">
+        <div id="modal-events" class="modal">
             <div class="modal-content">
             <h4>Find Events</h4><br />
             <form id="event-form">
@@ -100,10 +103,35 @@
             </form>
             </div>
         </div>
+
+    <!-- Movies Modal -->
+        <div id="modal-movies" class="modal">
+            <div class="modal-content">
+            <h4>Find Events</h4><br />
+            <form id="movies-form">
+                    <div class="input-field">
+                            <label for="start-date-input">Start Date</label>
+                            <input class="form-control" id="start-date-input" placeholder="2019-10-08" type="text">
+                    </div>
+                    <div class="input-field">
+                        <label for="zip-code-input">Zip Code</label>
+                        <input class="form-control" id="zip-code-input" placeholder="30340" type="text">
+                    </div>
+                    <div class="input-field">
+                        <label for="radius-input">Radius(mi)</label>
+                        <input class="form-control" id="radius-input" placeholder="10" type="text">
+                    </div>                        
+                        <button id="add-movie-btn">Submit</button>
+                    </form>
+            </div>
+        </div>
         
       
     <!-- Optional JavaScript -->
-    
+    <header>Project One Start Page</header>
+
+    <div id="movies-view"></div>
+    <div id="local-events"></div>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="./assets/js/application.js"></script>
@@ -111,24 +139,8 @@
 
 
 
-<body>
-    <header>Project One Start Page</header>
-    <br>
-    <br>
-    <form>
-        <div class="form-group">
-            <label for="start-date-input">Start Date</label>
-            <input class="form-control" id="start-date-input" placeholder="2019-10-08" type="text">
-            <label for="zip-code-input">Zip Code</label>
-            <input class="form-control" id="zip-code-input" placeholder="30340" type="text">
-            <label for="radius-input">Radius(mi)</label>
-            <input class="form-control" id="radius-input" placeholder="10" type="text">
-        </div>
-        <button id="add-movie-btn">Submit</button>
-    </form>
-    <br>
-    <div id="movies-view"></div>
-    <div id="local-events"></div>
+    
+    
 
     <script src="assets/js/application.js"></script>
 
