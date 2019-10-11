@@ -12,7 +12,7 @@ $(document).on('DOMContentLoaded', () => {
 
   $(document).ready(function(){
 
-    $("#add-event-btn").on("click", (event)=>{
+    $("#add-movie-btn").on("click", (event)=>{
 
       event.preventDefault();
 
@@ -42,52 +42,52 @@ $(document).on('DOMContentLoaded', () => {
 
     })
 
-})
-$("#add-event-btn").on("click", (event)=>{
+    });
 
-    event.preventDefault();
+    $("#add-event-btn").on("click", (ev)=>{
+
+        ev.preventDefault();
 
 
-    let TMapikey = "f7iOI1K6ZSelrJQmQ9kZrXMGns1biEKR";
-    //default postal code
-    let TMpostCode = $("#tm-zip-code-input").val().trim();
+        let TMapikey = "f7iOI1K6ZSelrJQmQ9kZrXMGns1biEKR";
+        //default postal code
+        let TMpostCode = $("#tm-zip-code-input").val().trim();
 
-    let TMradius = $("#tm-radius-input").val().trim();
-    
-    let TMkeyword = "concert";
-    
-    let TMevents = "/discovery/v2/attractions";
-
-    let TMsuggest = "/discovery/v2/suggest";
-
-        console.log(TMradius)
-        console.log(TMpostCode)
-    let TMqueryURL = `https://app.ticketmaster.com${TMsuggest}.json?apikey=${TMapikey}&postalCode=${TMpostCode}&radius=${TMradius}&keyword=${TMkeyword}`
-
-    $.ajax({
-        url: TMqueryURL,
-        method: "GET",
-        dataType: "json",
-
-      }).then(function(response) {
-        console.log(response);
-        let TM = response._embedded.attractions
-
-        for (let a = 0; a < TM.length; a++){
-            console.log(TM[a]);
-            
-            let nDiv = $("<div>");
-            $("#local-events").append(nDiv);
-
-            let nImg = $("<img>");
-            nImg.attr("src", TM[a].images[0].url);
-
-            $(nDiv).append(nImg)
-        }
+        let TMradius = $("#tm-radius-input").val().trim();
         
-      });
+        let TMkeyword = "music";
+        
+        let TMevents = "/discovery/v2/attractions";
 
-    })
+        let TMsuggest = "/discovery/v2/suggest";
+
+            console.log(TMradius)
+            console.log(TMpostCode)
+        let TMqueryURL = `https://app.ticketmaster.com${TMsuggest}.json?apikey=${TMapikey}&postalCode=${TMpostCode}&radius=${TMradius}&keyword=${TMkeyword}&limit=5`
+
+        $.ajax({
+            url: TMqueryURL,
+            method: "GET",
+
+        }).then(function(response) {
+            console.log(response);
+            const TM = response._embedded.attractions
+
+            for (let a = 0; a < TM.length; a++){
+                console.log(a);
+                
+                let nDiv = $("<div>");
+                let nImg = $("<img>");
+                
+                nImg.attr("src", TM[a].images[0].url);
+                
+                $("#local-events").append(nDiv);
+                $(nDiv).append(nImg)
+            }
+            
+        });
+
+    });
 
 
      
