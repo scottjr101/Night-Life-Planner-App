@@ -1,3 +1,4 @@
+
 //Materialize Modals
 $(document).on('DOMContentLoaded', () => {
 
@@ -13,10 +14,41 @@ $(document).on('DOMContentLoaded', () => {
 
     $("#add-event-btn").on("click", (event)=>{
 
+      event.preventDefault();
+
+        var startDate = $("#start-date-input").val().trim();
+        var zipCode = $("#zip-code-input").val().trim();
+        var radius = $("#radius-input").val().trim();
+        var queryURL = "http://data.tmsapi.com/v1.1/movies/showings?startDate=" + startDate + "&zip=" + zipCode + "&radius=" + radius + "&api_key=h22mr6gbzmesjmx4jb5qt67b"
+
+        $.ajax({
+            url: queryURL,
+            method: "GET"
+        }).then(function(response) {
+            console.log(response);
+            $("#movies-view").empty();
+            for (var i = 0; i < 10; i++) {
+            var div = $("<div class='movie_view'>");
+            var poster = "https://cuso.tmsimg.com/" + response[i].preferredImage.uri;
+            var image = $('<img>')
+            image.attr('src', poster)
+            div.append(image);
+            var title = response[i].title;
+            var hTwo = $("<h2>").text("Title: " + title);
+            div.append(hTwo);
+            $("#movies-view").append(div);
+
+    };
+
+    })
+
+})
+$("#add-event-btn").on("click", (event)=>{
+
     event.preventDefault();
 
 
-    let apikey = "f7iOI1K6ZSelrJQmQ9kZrXMGns1biEKR";
+    let TMapikey = "f7iOI1K6ZSelrJQmQ9kZrXMGns1biEKR";
     //default postal code
     let TMpostCode = $("#tm-zip-code-input").val().trim();
 
@@ -30,10 +62,10 @@ $(document).on('DOMContentLoaded', () => {
 
         console.log(TMradius)
         console.log(TMpostCode)
-    let queryURL = `https://app.ticketmaster.com${TMsuggest}.json?apikey=${apikey}&postalCode=${TMpostCode}&radius=${TMradius}&keyword=${TMkeyword}`
+    let TMqueryURL = `https://app.ticketmaster.com${TMsuggest}.json?apikey=${TMapikey}&postalCode=${TMpostCode}&radius=${TMradius}&keyword=${TMkeyword}`
 
     $.ajax({
-        url: queryURL,
+        url: TMqueryURL,
         method: "GET",
         dataType: "json",
 
@@ -57,4 +89,6 @@ $(document).on('DOMContentLoaded', () => {
 
     })
 
-})
+
+     
+});
