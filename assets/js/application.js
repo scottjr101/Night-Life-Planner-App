@@ -2,12 +2,11 @@
 //Materialize Modals
 $(document).on('DOMContentLoaded', () => {
     
-    let modals = document.querySelectorAll('.modal');
+    let modals = $('.modal');
     M.Modal.init(modals);
     
 });
-$(document).ready(function(){
-    let TMrun = false;
+$(document).ready(()=>{
 
     $("#add-movie-btn").click((event)=>{
 
@@ -60,7 +59,7 @@ $(document).ready(function(){
         let TMsuggest = "/discovery/v2/suggest";
 
         let TMqueryURL = `https://app.ticketmaster.com${TMsuggest}.json?apikey=${TMapikey}&postalCode=${TMpostCode}&radius=${TMradius}`
-        if (TMrun === false){
+        
             $.ajax({
                 url: TMqueryURL,
                 method: "GET",
@@ -80,9 +79,9 @@ $(document).ready(function(){
                     $("#local-events").append(nDiv);
                     $(nDiv).append(nImg)
                 }
-                TMrun = true;
+                
             });
-        }
+        
         
     });
 
