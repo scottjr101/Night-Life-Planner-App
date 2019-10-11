@@ -1,18 +1,15 @@
 
 //Materialize Modals
 $(document).on('DOMContentLoaded', () => {
-
+    
     let modals = document.querySelectorAll('.modal');
     M.Modal.init(modals);
-  
-    let items = document.querySelectorAll('.collapsible');
-    M.Collapsible.init(items);
-  
-  });
+    
+});
+$(document).ready(function(){
+    let TMrun = false;
 
-  $(document).ready(function(){
-
-    $("#add-movie-btn").on("click", (event)=>{
+    $("#add-movie-btn").click((event)=>{
 
       event.preventDefault();
 
@@ -44,10 +41,11 @@ $(document).on('DOMContentLoaded', () => {
 
     });
 
-    $("#add-event-btn").on("click", (ev)=>{
+    $("#add-event-btn").click((ev)=>{
+        
+        M.Modal.getInstance($("#modal-events")).close();
 
         ev.preventDefault();
-
 
         let TMapikey = "f7iOI1K6ZSelrJQmQ9kZrXMGns1biEKR";
         //default postal code
@@ -55,38 +53,37 @@ $(document).on('DOMContentLoaded', () => {
 
         let TMradius = $("#tm-radius-input").val().trim();
         
-        let TMkeyword = "music";
+        // let TMkeyword = "music";
         
-        let TMevents = "/discovery/v2/attractions";
+        // let TMevents = "/discovery/v2/attractions";
 
         let TMsuggest = "/discovery/v2/suggest";
 
-            console.log(TMradius)
-            console.log(TMpostCode)
-        let TMqueryURL = `https://app.ticketmaster.com${TMsuggest}.json?apikey=${TMapikey}&postalCode=${TMpostCode}&radius=${TMradius}&keyword=${TMkeyword}&limit=5`
+        let TMqueryURL = `https://app.ticketmaster.com${TMsuggest}.json?apikey=${TMapikey}&postalCode=${TMpostCode}&radius=${TMradius}`
+        if (TMrun === false){
+            $.ajax({
+                url: TMqueryURL,
+                method: "GET",
 
-        $.ajax({
-            url: TMqueryURL,
-            method: "GET",
+            }).then((response)=> {
+                console.log(response);
+                const TM = response._embedded.attractions
 
-        }).then(function(response) {
-            console.log(response);
-            const TM = response._embedded.attractions
-
-            for (let a = 0; a < TM.length; a++){
-                console.log(a);
-                
-                let nDiv = $("<div>");
-                let nImg = $("<img>");
-                
-                nImg.attr("src", TM[a].images[0].url);
-                
-                $("#local-events").append(nDiv);
-                $(nDiv).append(nImg)
-            }
-            
-        });
-
+                for (let a = 0; a < TM.length; a++){
+                    console.log(a);
+                    
+                    let nDiv = $("<div>");
+                    let nImg = $("<img>");
+                    
+                    nImg.attr("src", TM[a].images[0].url);
+                    
+                    $("#local-events").append(nDiv);
+                    $(nDiv).append(nImg)
+                }
+                TMrun = true;
+            });
+        }
+        
     });
 
 
