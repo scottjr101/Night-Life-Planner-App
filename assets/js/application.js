@@ -93,9 +93,10 @@ $("#add-event-btn").on("click", (event)=>{
     // Zomato Places Search
 
     $("#add-place-btn").on('click',(event)=>{
-      var barKey = "user-key=56127d7074bb1c0676f5c2ffcf0456e7"
-      var barQueryURL = "https://developers.zomato.com/api/v2.1/categories" + barKey
+      var barKey = "key=56127d7074bb1c0676f5c2ffcf0456e7"
+      var barQueryURL = "https://developers.zomato.com/api/v2.1/search?" + barKey
       
+      https://developers.zomato.com/api/v2.1/search?user-key=56127d7074bb1c0676f5c2ffcf0456e7&entity_id=288&count=10&category=14%2C%2011%2C%203&sort=rating
 
 
     });
