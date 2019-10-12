@@ -1,4 +1,10 @@
-
+(function($){
+    $(function(){
+  
+      $('.sidenav').sidenav();
+      $('.parallax').parallax();
+  
+}); // end of document ready
 //Materialize Modals
 $(document).on('DOMContentLoaded', () => {
     
