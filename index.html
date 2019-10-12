@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <title>Night Planner</title>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+        <!-- Compiled and minified JavaScript -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="./assets/css/style.css">
+            
+    </head>
+  <body>
+      
+        <nav class="z-depth-0 grey lighten-4">
+                <div class="nav-wrapper container">
+                  <a href="#" class="brand-logo">
+                    <img src="" style="width: 180px; margin-top: 10px;">
+                  </a>
+                  <ul id="nav-mobile" class="right hide-on-med-and-down">
+                      <li class="logged-in">
+                        <a href="#" class="grey-text modal-trigger" data-target="modal-account">Account</a>
+                      </li>
+                      <li class="logged-in">
+                        <a href="#" class="grey-text" id="logout">Logout</a>
+                      </li>
+                      <li class="logged-in">
+                            <a href="#" class="grey-text modal-trigger" data-target="modal-events">Events</a>
+                        </li>
+                      <li class="logged-in">
+                            <a href="#" class="grey-text modal-trigger" data-target="modal-movies">Movies</a>
+                        </li>
+                      <li class="logged-out">
+                        <a href="#" class="grey-text modal-trigger" data-target="modal-login">Login</a>
+                      </li>
+                      <li class="logged-out">
+                        <a href="#" class="grey-text modal-trigger" data-target="modal-signup">Sign up</a>
+                      </li>
+                    </span>
+                  </ul>
+                </div>
+              </nav>
+
+    <!--Sign up modal-->
+        <div id="modal-signup" class="modal">
+            <div class="modal-content">
+                <h4>Sign Up</h4><br>
+                <form action="" id="signup-form">
+                    <div class="input-field">
+                        <input type="email" id="signup-email" required />
+                        <label for="signup-email">Email Address</label>
+                    </div>
+                    <div class="input-field">
+                        <input type="password" id="signup-password">
+                        <label for="signup-password">Choose Password</label>
+                    </div>
+                    <button class="btn yellow darken-2 z-depth-0">Signup</button>
+                </form>
+            </div>
+        </div>
+        <!-- LOGIN MODAL -->
+  <div id="modal-login" class="modal">
+        <div class="modal-content">
+          <h4>Login</h4><br />
+          <form id="login-form">
+            <div class="input-field">
+              <input type="email" id="login-email" required />
+              <label for="login-email">Email address</label>
+            </div>
+            <div class="input-field">
+              <input type="password" id="login-password" required />
+              <label for="login-password">Your password</label>
+            </div>
+            <button class="btn yellow darken-2 z-depth-0">Login</button>
+          </form>
+        </div>
+      </div>
+    <!-- Events Modal -->
+        <div id="modal-events" class="modal">
+            <div class="modal-content">
+            <h4>Find Events</h4><br />
+            <form id="event-form">
+                <div class="input-field">
+                    <label for="start-date-input">Start Date</label>
+                    <input class="form-control" id="tm-start-date-input" placeholder="2019-10-08" type="text">
+                </div>
+                <div class="input-field">
+                    <label for="start-date-input">End Date</label>
+                    <input class="form-control" id="tm-end-date-input" placeholder="2019-10-08" type="text">
+                </div>
+                <div class="input-field">
+                    <label for="zip-code-input">City</label>
+                    <input class="form-control" id="tm-city-input" placeholder="atlanta" type="text">
+                </div>
+                <button id="add-event-btn" class="modal-close btn yellow darken-2 z-depth-0">Submit</button>
+              </form>
+            </div>
+        </div>
+
+    <!-- Movies Modal -->
+        <div id="modal-movies" class="modal">
+            <div class="modal-content">
+            <h4>Find Movies</h4><br />
+            <form id="movies-form">
+                    <div class="input-field">
+                            <label for="start-date-input">Start Date</label>
+                            <input class="form-control" id="start-date-input" placeholder="2019-10-08" type="text">
+                    </div>
+                    <div class="input-field">
+                        <label for="zip-code-input">Zip Code</label>
+                        <input class="form-control" id="zip-code-input" placeholder="30340" type="text">
+                    </div>
+                    <div class="input-field">
+                        <label for="radius-input">Radius(mi)</label>
+                        <input class="form-control" id="radius-input" placeholder="10" type="text">
+                    </div>                        
+                    <button id="add-movie-btn" class="modal-close btn yellow darken-2 z-depth-0">Submit</button>
+                  </form>
+            </div>
+        </div>
+    
+      <!-- Places Modal -->
+        <div id="modal-places" class="modal">
+            <div class="modal-content">
+            <h4>Find Places</h4><br />
+            <form id="places-form">
+                    <div class="input-field">
+                            <label for="start-date-input">Start Date</label>
+                            <input class="form-control" id="g-start-date-input" placeholder="2019-10-08" type="text">
+                    </div>
+                    <div class="input-field">
+                        <label for="zip-code-input">Zip Code</label>
+                        <input class="form-control" id="g-zip-code-input" placeholder="30340" type="text">
+                    </div>
+                    <div class="input-field">
+                        <label for="radius-input">Radius(mi)</label>
+                        <input class="form-control" id="g-radius-input" placeholder="10" type="text">
+                    </div>                        
+                        <button id="add-place-btn">Submit</button>
+                    </form>
+            </div>
+        </div>
+        
+      
+    <!-- Optional JavaScript -->
+    <header class="header center teal-text">Plan Your Experience</header>
+
+    <div id="movies-view"></div>
+    <div id="local-events"></div>
+
+    <div id="index-banner" class="parallax-container">
+      <div class="section no-pad-bot">
+        <div class="container">
+          <br><br>
+          <h1 class="header center teal-text text-lighten-2">Nightlife Planner</h1>
+          <div class="row center">
+            <h5 class="header col s12 light" id="infoboard">A modern way to plan your relaxation.</h5>
+          </div>
+          <div class="row center">
+            <a href="" id="download-button" class="btn-large waves-effect waves-light teal lighten-1">Get Started</a>
+          </div>
+          <br><br>
+        </div>
+      </div>
+      <div class="parallax"><img src="./assets/images/background-kissing-park.jpg" alt="Unsplashed background img 1"></div>
+    </div>
+
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="./assets/js/application.js"></script>
+
+
+</body>
+
+</html>
