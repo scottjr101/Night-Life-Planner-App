@@ -19,31 +19,37 @@
 
       event.preventDefault();
 
-        var startDate = $("#start-date-input").val().trim();
-        var zipCode = $("#zip-code-input").val().trim();
-        var radius = $("#radius-input").val().trim();
-        var queryURL = "http://data.tmsapi.com/v1.1/movies/showings?startDate=" + startDate + "&zip=" + zipCode + "&radius=" + radius + "&api_key=h22mr6gbzmesjmx4jb5qt67b"
-
-        $.ajax({
+      var startDate = $("#start-date-input").val().trim();
+      var zipCode = $("#zip-code-input").val().trim();
+      var radius = $("#radius-input").val().trim();
+      var queryURL = "http://data.tmsapi.com/v1.1/movies/showings?startDate=" + startDate + "&zip=" + zipCode + "&radius=" + radius + "&api_key=h22mr6gbzmesjmx4jb5qt67b"
+       
+      $.ajax({
             url: queryURL,
             method: "GET"
-        }).then(function(response) {
+          }).then(function (response) {
             console.log(response);
             $("#movies-view").empty();
-            for (var i = 0; i < 10; i++) {
-            var div = $("<div class='movie_view'>");
-            var poster = "https://cuso.tmsimg.com/" + response[i].preferredImage.uri;
-            var image = $('<img>')
-            image.attr('src', poster)
-            div.append(image);
-            var title = response[i].title;
-            var hTwo = $("<h2>").text("Title: " + title);
-            div.append(hTwo);
-            $("#movies-view").append(div);
+            for (var i = 0; i < 100; i++) {
+              var div = $("<div class='movie_view'>");
+              var title = response[i].title;
+              var p = $("<p>").text(title);
+              div.append(p);
+              var poster = "https://cuso.tmsimg.com/" + response[i].preferredImage.uri;
+              var image = $('<img>');
+              image.attr('src', poster);
+              div.append(image);
+              div.append('<br>');
+              var a = $("<a href='../../showtimes.html'>");
+              a.text("Click here for showtimes");
+              div.append(a);
+              $("#movies-view").append(div);
+      
+            };
 
-    };
+    
 
-    })
+    });
 
     });
 
