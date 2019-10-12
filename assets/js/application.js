@@ -44,8 +44,16 @@ $(document).ready(() => {
         a.text("Click here for showtimes");
         div.append(a);
         $("#movies-view").append(div);
-
+        
       };
+      
+        $(document).ready(function () {
+
+        let modals = document.querySelectorAll('.modal');
+        M.Modal.init(modals);
+      
+      });
+
 
 
 
