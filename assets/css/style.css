@@ -1,0 +1,33 @@
+body{
+    background-color: yellowgreen;
+    text-align: center;
+    background-image: url("../images/background-kissing-park.jpg");
+    background-size: 100%;
+}
+header{
+    font-size: 500%;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 20px;
+    /* color: black; */
+}
+.movie_view {
+    padding: 10px 10px 10px 10px;
+    display: inline-block;
+}
+#movies-view {
+    text-align: center;
+}
+
+p {
+    padding: 0px 0px 0px 0px;
+    margin: 1px 1px 1px 1px;
+}
+.showArea {
+    width: 250px;
+    height: 400px;
+    overflow: scroll;
+    border: solid 1px black
+}
+#infoboard {
+    background-color: cornflowerblue;
+}
