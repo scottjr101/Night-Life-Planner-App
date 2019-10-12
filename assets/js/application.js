@@ -1,18 +1,19 @@
-(function($){
-    $(function(){
+// (function($){
+//     $(function(){
   
-      $('.sidenav').sidenav();
-      $('.parallax').parallax();
+//       $('.sidenav').sidenav();
+//       $('.parallax').parallax();
   
-}); // end of document ready
-//Materialize Modals
-$(document).on('DOMContentLoaded', () => {
+//     }); 
+    // end of document ready
+    //Materialize Modals
+    $(document).on('DOMContentLoaded', () => {
     
     let modals = $('.modal');
     M.Modal.init(modals);
     
-});
-$(document).ready(()=>{
+    });
+    $(document).ready(()=>{
 
     $("#add-movie-btn").click((event)=>{
 
