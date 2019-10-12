@@ -87,7 +87,19 @@ $("#add-event-btn").on("click", (event)=>{
         
       });
 
-    })
+    });
+
+
+    // Zomato Places Search
+
+    $("#add-place-btn").on('click',(event)=>{
+      var barKey = "user-key=56127d7074bb1c0676f5c2ffcf0456e7"
+      var barQueryURL = "https://developers.zomato.com/api/v2.1/categories" + barKey
+      
+
+
+    });
+
 
 
      
