@@ -50,14 +50,14 @@ $(document).ready(()=>{
         //default postal code
         let TMstart = $("#tm-start-date-input").val().trim();
         let TMend = $("#tm-end-date-input").val().trim();        
-        // let TMkeyword = "music";        
+        let TMcity = $("#tm-city-input").val().trim();;        
         // let TMevents = "/discovery/v2/attractions";
         let TMevents = "/discovery/v2/events";
 
         //let TMqueryURL = `https://app.ticketmaster.com${TMevents}.json?apikey=${TMapikey}&postalCode=${TMpostCode}&radius=${TMradius}`
         
-        //the dmaId is the code ticket master uses for cities, 220 = atlanta
-        let TMqueryURL = `https://app.ticketmaster.com${TMevents}.json?apikey=${TMapikey}&dmaId=220&startdatetime=${TMstart}&enddatetime=${TMend}`
+        //the dmaId is the code ticket master uses for cities, 220 = atlanta &city=${TMcity} &enddatetime=${TMstart}
+        let TMqueryURL = `https://app.ticketmaster.com${TMevents}.json?apikey=${TMapikey}&dmaId=220&localStartDateTime=${TMstart}T14:00:00&localEndDateTime=${TMend}T14:00:00&sort=date,name,asc`
         
             $.ajax({
                 url: TMqueryURL,
