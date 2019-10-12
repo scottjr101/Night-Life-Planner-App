@@ -48,17 +48,16 @@ $(document).ready(()=>{
 
         let TMapikey = "f7iOI1K6ZSelrJQmQ9kZrXMGns1biEKR";
         //default postal code
-        let TMpostCode = $("#tm-zip-code-input").val().trim();
-
-        let TMradius = $("#tm-radius-input").val().trim();
-        
-        // let TMkeyword = "music";
-        
+        //let TMpostCode = $("#tm-zip-code-input").val().trim();
+        //let TMradius = $("#tm-radius-input").val().trim();        
+        // let TMkeyword = "music";        
         // let TMevents = "/discovery/v2/attractions";
+        let TMevents = "/discovery/v2/events";
 
-        let TMsuggest = "/discovery/v2/suggest";
-
-        let TMqueryURL = `https://app.ticketmaster.com${TMsuggest}.json?apikey=${TMapikey}&postalCode=${TMpostCode}&radius=${TMradius}`
+        //let TMqueryURL = `https://app.ticketmaster.com${TMevents}.json?apikey=${TMapikey}&postalCode=${TMpostCode}&radius=${TMradius}`
+        
+        //the dmaId is the code ticket master uses for cities, 220 = atlanta
+        let TMqueryURL = `https://app.ticketmaster.com${TMevents}.json?apikey=${TMapikey}&dmaId=220`
         
             $.ajax({
                 url: TMqueryURL,
@@ -66,7 +65,7 @@ $(document).ready(()=>{
 
             }).then((response)=> {
                 console.log(response);
-                const TM = response._embedded.attractions
+                const TM = response._embedded.events
 
                 for (let a = 0; a < TM.length; a++){
                     console.log(a);
