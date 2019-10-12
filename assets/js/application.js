@@ -12,6 +12,9 @@ $(document).on('DOMContentLoaded', () => {
   let modals = $('.modal');
   M.Modal.init(modals);
 
+  let items = document.querySelectorAll('.collapsible');
+  M.Collapsible.init(items);
+
 });
 $(document).ready(() => {
 
@@ -46,15 +49,6 @@ $(document).ready(() => {
         $("#movies-view").append(div);
         
       };
-      
-        $(document).ready(function () {
-
-        let modals = document.querySelectorAll('.modal');
-        M.Modal.init(modals);
-      
-      });
-
-
 
 
     $("#add-event-btn").click((ev)=>{
