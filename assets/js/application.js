@@ -1,18 +1,14 @@
 
 //Materialize Modals
 $(document).on('DOMContentLoaded', () => {
-
-    let modals = document.querySelectorAll('.modal');
+    
+    let modals = $('.modal');
     M.Modal.init(modals);
-  
-    let items = document.querySelectorAll('.collapsible');
-    M.Collapsible.init(items);
-  
-  });
+    
+});
+$(document).ready(()=>{
 
-  $(document).ready(function(){
-
-    $("#add-movie-btn").on("click", (event)=>{
+    $("#add-movie-btn").click((event)=>{
 
       event.preventDefault();
 
@@ -42,52 +38,51 @@ $(document).on('DOMContentLoaded', () => {
 
     })
 
-})
-$("#add-event-btn").on("click", (event)=>{
+    });
 
-    event.preventDefault();
-
-
-    let TMapikey = "f7iOI1K6ZSelrJQmQ9kZrXMGns1biEKR";
-    //default postal code
-    let TMpostCode = $("#tm-zip-code-input").val().trim();
-
-    let TMradius = $("#tm-radius-input").val().trim();
-    
-    let TMkeyword = "concert";
-    
-    let TMevents = "/discovery/v2/attractions";
-
-    let TMsuggest = "/discovery/v2/suggest";
-
-        console.log(TMradius)
-        console.log(TMpostCode)
-    let TMqueryURL = `https://app.ticketmaster.com${TMsuggest}.json?apikey=${TMapikey}&postalCode=${TMpostCode}&radius=${TMradius}&keyword=${TMkeyword}`
-
-    $.ajax({
-        url: TMqueryURL,
-        method: "GET",
-        dataType: "json",
-
-      }).then(function(response) {
-        console.log(response);
-        let TM = response._embedded.attractions
-
-        for (let a = 0; a < TM.length; a++){
-            console.log(TM[a]);
-            
-            let nDiv = $("<div>");
-            $("#local-events").append(nDiv);
-
-            let nImg = $("<img>");
-            nImg.attr("src", TM[a].images[0].url);
-
-            $(nDiv).append(nImg)
-        }
+    $("#add-event-btn").click((ev)=>{
         
-      });
+        M.Modal.getInstance($("#modal-events")).close();
 
-    })
+        ev.preventDefault();
+
+        let TMapikey = "f7iOI1K6ZSelrJQmQ9kZrXMGns1biEKR";
+        //default postal code
+        let TMstart = $("#tm-start-date-input").val().trim();
+        let TMend = $("#tm-end-date-input").val().trim();        
+        let TMcity = $("#tm-city-input").val().trim();;        
+        // let TMevents = "/discovery/v2/attractions";
+        let TMevents = "/discovery/v2/events";
+
+        //let TMqueryURL = `https://app.ticketmaster.com${TMevents}.json?apikey=${TMapikey}&postalCode=${TMpostCode}&radius=${TMradius}`
+        
+        //the dmaId is the code ticket master uses for cities, 220 = atlanta &city=${TMcity} &enddatetime=${TMstart}
+        let TMqueryURL = `https://app.ticketmaster.com${TMevents}.json?apikey=${TMapikey}&dmaId=220&localStartDateTime=${TMstart}T14:00:00&localEndDateTime=${TMend}T14:00:00&sort=date,name,asc`
+        
+            $.ajax({
+                url: TMqueryURL,
+                method: "GET",
+
+            }).then((response)=> {
+                console.log(response);
+                const TM = response._embedded.events
+
+                for (let a = 0; a < TM.length; a++){
+                    console.log(a);
+                    
+                    let nDiv = $("<div>");
+                    let nImg = $("<img>");
+                    
+                    nImg.attr("src", TM[a].images[0].url);
+                    
+                    $("#local-events").append(nDiv);
+                    $(nDiv).append(nImg)
+                }
+                
+            });
+        
+        
+    });
 
 
      
