@@ -48,8 +48,8 @@ $(document).ready(()=>{
 
         let TMapikey = "f7iOI1K6ZSelrJQmQ9kZrXMGns1biEKR";
         //default postal code
-        //let TMpostCode = $("#tm-zip-code-input").val().trim();
-        //let TMradius = $("#tm-radius-input").val().trim();        
+        let TMstart = $("#tm-start-date-input").val().trim();
+        let TMend = $("#tm-end-date-input").val().trim();        
         // let TMkeyword = "music";        
         // let TMevents = "/discovery/v2/attractions";
         let TMevents = "/discovery/v2/events";
@@ -57,7 +57,7 @@ $(document).ready(()=>{
         //let TMqueryURL = `https://app.ticketmaster.com${TMevents}.json?apikey=${TMapikey}&postalCode=${TMpostCode}&radius=${TMradius}`
         
         //the dmaId is the code ticket master uses for cities, 220 = atlanta
-        let TMqueryURL = `https://app.ticketmaster.com${TMevents}.json?apikey=${TMapikey}&dmaId=220`
+        let TMqueryURL = `https://app.ticketmaster.com${TMevents}.json?apikey=${TMapikey}&dmaId=220&startdatetime=${TMstart}&enddatetime=${TMend}`
         
             $.ajax({
                 url: TMqueryURL,
