@@ -49,6 +49,9 @@
                 </div>
               </nav>
 
+  <!-- Compiled and minified JavaScript -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="./assets/css/style.css">
 
 </head>
@@ -132,75 +135,100 @@
               </form>
             </div>
         </div>
-
-    <!-- Movies Modal -->
-        <div id="modal-movies" class="modal">
-            <div class="modal-content">
-            <h4>Find Movies</h4><br />
-            <form id="movies-form">
-                    <div class="input-field">
-                            <label for="start-date-input">Start Date</label>
-                            <input class="form-control" id="start-date-input" placeholder="2019-10-08" type="text">
-                    </div>
-                    <div class="input-field">
-                        <label for="zip-code-input">Zip Code</label>
-                        <input class="form-control" id="zip-code-input" placeholder="30340" type="text">
-                    </div>
-                    <div class="input-field">
-                        <label for="radius-input">Radius(mi)</label>
-                        <input class="form-control" id="radius-input" placeholder="10" type="text">
-                    </div>                        
-                    <button id="add-movie-btn" class="modal-close btn yellow darken-2 z-depth-0">Submit</button>
-                  </form>
-            </div>
-        </div>
-    
-      <!-- Places Modal -->
-        <div id="modal-places" class="modal">
-            <div class="modal-content">
-            <h4>Find Places</h4><br />
-            <form id="places-form">
-                    <div class="input-field">
-                            <label for="start-date-input">Start Date</label>
-                            <input class="form-control" id="g-start-date-input" placeholder="2019-10-08" type="text">
-                    </div>
-                    <div class="input-field">
-                        <label for="zip-code-input">Zip Code</label>
-                        <input class="form-control" id="g-zip-code-input" placeholder="30340" type="text">
-                    </div>
-                    <div class="input-field">
-                        <label for="radius-input">Radius(mi)</label>
-                        <input class="form-control" id="g-radius-input" placeholder="10" type="text">
-                    </div>                        
-                        <button id="add-place-btn">Submit</button>
-                    </form>
-            </div>
-        </div>
-        
-      
-    <!-- Optional JavaScript -->
-    <header class="header center teal-text">Plan Your Experience</header>
-
-    <div id="movies-view"></div>
-    <div id="local-events" class="row"></div>
-    <div id="view-places"></div>
-
-    <div id="index-banner" class="parallax-container">
-      <div class="section no-pad-bot">
-        <div class="container">
-          <br><br>
-          <h1 class="header center teal-text text-lighten-2">Nightlife Planner</h1>
-          <div class="row center">
-            <h5 class="header col s12 light" id="infoboard">A modern way to plan your relaxation.</h5>
-          </div>
-          <div class="row center">
-            <a href="" id="download-button" class="btn-large waves-effect waves-light teal lighten-1">Get Started</a>
-          </div>
-          <br><br>
-        </div>
-      </div>
-      <div class="parallax"><img src="./assets/images/background-kissing-park.jpg" alt="Unsplashed background img 1"></div>
+        <button class="btn yellow darken-2 z-depth-0">Login</button>
+      </form>
     </div>
+  </div>
+  <!-- Events Modal -->
+  <div id="modal-events" class="modal">
+    <div class="modal-content">
+      <h4>Find Events</h4><br />
+      <form id="event-form">
+        <div class="input-field">
+          <label for="start-date-input">Start Date</label>
+          <input class="form-control" id="tm-start-date-input" placeholder="2019-10-08" type="text">
+        </div>
+        <div class="input-field">
+          <label for="start-date-input">End Date</label>
+          <input class="form-control" id="tm-end-date-input" placeholder="2019-10-08" type="text">
+        </div>
+        <div class="input-field">
+          <label for="zip-code-input">City</label>
+          <input class="form-control" id="tm-city-input" placeholder="atlanta" type="text">
+        </div>
+        <button id="add-event-btn" class="modal-close btn yellow darken-2 z-depth-0">Submit</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Movies Modal -->
+  <div id="modal-movies" class="modal">
+    <div class="modal-content">
+      <h4>Find Movies</h4><br />
+      <form id="movies-form">
+        <div class="input-field">
+          <label for="start-date-input">Start Date</label>
+          <input class="form-control" id="start-date-input" placeholder="2019-10-08" type="text">
+        </div>
+        <div class="input-field">
+          <label for="zip-code-input">Zip Code</label>
+          <input class="form-control" id="zip-code-input" placeholder="30340" type="text">
+        </div>
+        <div class="input-field">
+          <label for="radius-input">Radius(mi)</label>
+          <input class="form-control" id="radius-input" placeholder="10" type="text">
+        </div>
+        <button id="add-movie-btn" class="modal-close btn yellow darken-2 z-depth-0">Submit</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Places Modal -->
+  <div id="modal-places" class="modal">
+    <div class="modal-content">
+      <h4>Find Places</h4><br />
+      <form id="places-form">
+        <div class="input-field">
+          <label for="start-date-input">Start Date</label>
+          <input class="form-control" id="g-start-date-input" placeholder="2019-10-08" type="text">
+        </div>
+        <div class="input-field">
+          <label for="zip-code-input">Zip Code</label>
+          <input class="form-control" id="g-zip-code-input" placeholder="30340" type="text">
+        </div>
+        <div class="input-field">
+          <label for="radius-input">Radius(mi)</label>
+          <input class="form-control" id="g-radius-input" placeholder="10" type="text">
+        </div>
+        <button id="add-place-btn">Submit</button>
+      </form>
+    </div>
+  </div>
+
+
+  <!-- Optional JavaScript -->
+  <header class="header center teal-text">Plan Your Experience</header>
+
+  <div id="movies-view"></div>
+  <div id="local-events"></div>
+
+  <div id="index-banner" class="parallax-container">
+    <div class="section no-pad-bot">
+      <div class="container">
+        <br><br>
+        <h1 class="header center teal-text text-lighten-2">Nightlife Planner</h1>
+        <div class="row center">
+          <h5 class="header col s12 light" id="infoboard">A modern way to plan your relaxation.</h5>
+        </div>
+        <div class="row center">
+          <a href="" id="download-button" class="btn-large waves-effect waves-light teal lighten-1">Get Started</a>
+        </div>
+        <br><br>
+      </div>
+    </div>
+    <div class="parallax"><img src="./assets/images/background-kissing-park.jpg" alt="Unsplashed background img 1">
+    </div>
+  </div>
 
     <div class="container">
         <div class="section">
@@ -239,11 +267,11 @@
       </div>
 
 
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="./assets/js/application.js"></script>
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="./assets/js/application.js"></script>
 
 
 </body>
