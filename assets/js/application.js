@@ -90,23 +90,35 @@
                     
                     $("#local-events").append(nDiv);
                     $(nDiv).append(nImg)
-                }
+                  }
+                  
+                });
+              });
                 
-            });
-        
-            Zomato Places Search
+    // // Google Places Search
 
-            $("#add-place-btn").on('click',(event)=>{
-              var barKey = "key=56127d7074bb1c0676f5c2ffcf0456e7"
-              var barQueryURL = "https://developers.zomato.com/api/v2.1/search?" + barKey
-              
-              https://developers.zomato.com/api/v2.1/search?user-key=56127d7074bb1c0676f5c2ffcf0456e7&entity_id=288&count=10&category=14%2C%2011%2C%203&sort=rating
-        
-            });
-        
+    $("#add-place-btn").click((barSearch)=>{
 
-        
+      barSearch.preventDefault();
+
+      var barKey = "&key=AIzaSyCXm0BKxaJWjRRDLNk7WIgl-dXukR1iVSM"
+      var barQueryURL = "https://maps.googleapis.com/maps/api/place/textsearch/json?"
+      var barZipSearch = "&query=bars+" + $("#g-zip-code-input").val().trim()
+      
+    // https://maps.googleapis.com/maps/api/place/textsearch/json?query=bars+in+Atlanta&key=AIzaSyCXm0BKxaJWjRRDLNk7WIgl-dXukR1iVSM
+      
+    $.ajax({
+      url: barQueryURL + barKey + barZipSearch,
+      method: "GET"
+    }).then(function(response){
+      console.log(response);
+      
+    })
+
     });
+        
+
+        
 
 
      
