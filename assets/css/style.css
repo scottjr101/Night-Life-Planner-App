@@ -25,10 +25,7 @@ p {
     margin: 1px 1px 1px 1px;
 }
 .showArea {
-    width: 250px;
-    height: 400px;
-    overflow: scroll;
-    border: solid 1px black
+  
 }
 #infoboard {
     background-color: cornflowerblue;
