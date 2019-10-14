@@ -172,7 +172,6 @@ $(document).ready(() => {
         // var barCity = "&cities=Atlanta" 
         // var barsPubs = "&catagories=11"
   
-      // https://maps.googleapis.com/maps/api/place/textsearch/json?query=bars+in+Atlanta&key=AIzaSyCXm0BKxaJWjRRDLNk7WIgl-dXukR1iVSM
         
       $.ajax({  
         url: "https://developers.zomato.com/api/v2.1/search?entity_id=288&entity_type=city&q=bars+decatur&sort=rating&order=desc",
@@ -190,13 +189,13 @@ $(document).ready(() => {
           for (var b = 0; b < 20; b++){
             console.log(response.restaurants[b].restaurant.name);
             // create html element to hold desired response object data
-            var display = $("<div class='bar-display>");
-            let name = response.resturants[b].restaurant.name;
+            var display = $("<div class='bar-display'>");
+            var name = response.restaurants[b].restaurant.name;
             var nameTag = $("<p>").text(name);
-            // var image = response.restaurants[b].restaurant.thumb;
-            // var imageTag = $('<img>');
-            // imageTag.attr('src', image);
-            display.append(nameTag);
+            var image = response.restaurants[b].restaurant.thumb;
+            var imageTag = $('<img>');
+            imageTag.attr('src', image);
+            display.append(nameTag, imageTag);
             $("#view-places").append(display);
 
 
