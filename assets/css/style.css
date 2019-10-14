@@ -1,4 +1,3 @@
-
 body{
     background-color: yellowgreen;
     text-align: center;
@@ -14,18 +13,16 @@ header{
 .movie_view {
     padding: 10px 10px 10px 10px;
     display: inline-block;
+    height: 350px;
+    width: 300px;
 }
 #movies-view {
     text-align: center;
 }
 
 p {
-    font-size: 25px;
     padding: 0px 0px 0px 0px;
     margin: 1px 1px 1px 1px;
-}
-.showArea {
-  
 }
 #infoboard {
     background-color: cornflowerblue;

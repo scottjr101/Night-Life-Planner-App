@@ -7,12 +7,10 @@
 //     }); 
 // end of document ready
 //Materialize Modals
-$(document).ready(function(){
-  modals=$('.modal').modal();
-  M.Modal.init(modals);
+$(document).on('DOMContentLoaded', () => {
 
-  let items = document.querySelectorAll('.collapsible');
-  M.Collapsible.init(items);
+  let modals = $('.modal');
+  M.Modal.init(modals);
 
 });
 $(document).ready(() => {
@@ -24,7 +22,7 @@ $(document).ready(() => {
     var startDate = $("#start-date-input").val().trim();
     var zipCode = $("#zip-code-input").val().trim();
     var radius = $("#radius-input").val().trim();
-    var queryURL = "https://data.tmsapi.com/v1.1/movies/showings?startDate=" + startDate + "&zip=" + zipCode + "&radius=" + radius + "&api_key=bvgrz58926bezm5jmeb7jmk2"
+    var queryURL = "http://data.tmsapi.com/v1.1/movies/showings?startDate=" + startDate + "&zip=" + zipCode + "&radius=" + radius + "&api_key=h22mr6gbzmesjmx4jb5qt67b"
 
     $.ajax({
       url: queryURL,
@@ -35,20 +33,23 @@ $(document).ready(() => {
       for (var i = 0; i < 100; i++) {
         var div = $("<div class='movie_view'>");
         var title = response[i].title;
-        var p = $("<p>").text(title);
-        div.append(p);
+        var rating = response[i].ratings[0].code;
+        var p1 = $("<p>").text(title + ' rated: ' + rating);
+        div.append(p1);
         var poster = "https://cuso.tmsimg.com/" + response[i].preferredImage.uri;
         var image = $('<img>');
         image.attr('src', poster);
         div.append(image);
         div.append('<br>');
+        var genres = response[i].genres;
+        var p2 = $("<p>").text('Genre(s): ' + genres);
+        div.append(p2);
+        var shortDescrip = response[i].shortDescription;
+        var p3 = $("<p>").text('plot: ' + shortDescrip);
+        div.append(p3);
+        div.append('<br>');
         $("#movies-view").append(div);
-        
-      };
 
-      $(document).ready(function(){
-        modals=$('.modal').modal();
-        M.Modal.init(modals);
       };
 
     $("#add-event-btn").click((ev)=>{
