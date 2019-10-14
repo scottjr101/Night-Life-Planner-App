@@ -175,7 +175,7 @@ $(document).ready(() => {
       // https://maps.googleapis.com/maps/api/place/textsearch/json?query=bars+in+Atlanta&key=AIzaSyCXm0BKxaJWjRRDLNk7WIgl-dXukR1iVSM
         
       $.ajax({  
-        url: "https://developers.zomato.com/api/v2.1/search?q=bars&count=40&sort=rating&order=desc",
+        url: "https://developers.zomato.com/api/v2.1/search?entity_id=288&entity_type=city&q=bars+decatur&sort=rating&order=desc",
         dataType: 'json',
         async: true,
         beforeSend: function(xhr){xhr.setRequestHeader('user-key', 
@@ -188,9 +188,21 @@ $(document).ready(() => {
           $("#view-places").empty();
           // Iterate through response array
           for (var b = 0; b < 20; b++){
-            // create html element to hold response object data
-            // var display = $("<div class='bar-search-results'>");
-            // var objectName = response[b].results_found;
+            console.log(response.restaurants[b].restaurant.name);
+            // create html element to hold desired response object data
+            var display = $("<div class='bar-display>");
+            let name = response.resturants[b].restaurant.name;
+            var nameTag = $("<p>").text(name);
+            // var image = response.restaurants[b].restaurant.thumb;
+            // var imageTag = $('<img>');
+            // imageTag.attr('src', image);
+            display.append(nameTag);
+            $("#view-places").append(display);
+
+
+
+            // console.log(response.restaurants[b].restaurant.thumb);
+            // console.log(response.restaurants[b].restaurant.location.locality);
           }
   
         
