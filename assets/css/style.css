@@ -1,14 +1,17 @@
 body{
     background-color: yellowgreen;
+}
+body{
+    background-color: yellowgreen;
     text-align: center;
-    background-image: url("../images/background-kissing-park.jpg");
+    background-image: url("../images/background-concert.jpg");
     background-size: 100%;
 }
 header{
     font-size: 500%;
     font-family: Arial, Helvetica, sans-serif;
     margin-top: 20px;
-    /* color: black; */
+    color: black;
 }
 .movie_view {
     padding: 10px 10px 10px 10px;
@@ -30,4 +33,25 @@ p {
 }
 #infoboard {
     background-color: cornflowerblue;
+}
+.eventImg{
+    max-width: 500px;
+}
+.eventImg:hover{
+    opacity: .75;
+}
+.eventDiv {
+    position: relative;
+    text-align: center;
+    color: white;
+}
+.eventInfo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+}
+.eventInfo:hover {
+    opacity: 1;
 }

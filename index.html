@@ -11,6 +11,7 @@
         <!-- Compiled and minified JavaScript -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        
         <link rel="stylesheet" href="./assets/css/style.css">
             
     </head>
@@ -33,6 +34,9 @@
                         </li>
                       <li class="logged-in">
                             <a href="#" class="grey-text modal-trigger" data-target="modal-movies">Movies</a>
+                        </li>
+                      <li class="logged-in">
+                            <a href="#" class="grey-text modal-trigger" data-target="modal-places">Bars & Clubs</a>
                         </li>
                       <li class="logged-out">
                         <a href="#" class="grey-text modal-trigger" data-target="modal-login">Login</a>
@@ -86,11 +90,11 @@
             <form id="event-form">
                 <div class="input-field">
                     <label for="start-date-input">Start Date</label>
-                    <input class="form-control" id="tm-start-date-input" placeholder="2019-10-08" type="text">
+                    <input class="form-control" id="tm-start-date-input" placeholder="" type="date">
                 </div>
                 <div class="input-field">
                     <label for="start-date-input">End Date</label>
-                    <input class="form-control" id="tm-end-date-input" placeholder="2019-10-08" type="text">
+                    <input class="form-control" id="tm-end-date-input" placeholder="" type="date">
                 </div>
                 <div class="input-field">
                     <label for="zip-code-input">City</label>
@@ -151,6 +155,7 @@
 
     <div id="movies-view"></div>
     <div id="local-events"></div>
+    <div id="view-places"></div>
 
     <div id="index-banner" class="parallax-container">
       <div class="section no-pad-bot">
@@ -168,6 +173,42 @@
       </div>
       <div class="parallax"><img src="./assets/images/background-kissing-park.jpg" alt="Unsplashed background img 1"></div>
     </div>
+
+    <div class="container">
+        <div class="section">
+    
+          <!--   Icon Section   -->
+          <div class="row">
+            <div class="col s12 m4">
+              <div class="icon-block">
+                <h2 class="center brown-text"><i class="material-icons">flash_on</i></h2>
+                <h5 class="center">Speeds up development</h5>
+    
+                <p class="light">We did most of the heavy lifting for you to provide a default stylings that incorporate our custom components. Additionally, we refined animations and transitions to provide a smoother experience for developers.</p>
+              </div>
+            </div>
+    
+            <div class="col s12 m4">
+              <div class="icon-block">
+                <h2 class="center brown-text"><i class="material-icons">group</i></h2>
+                <h5 class="center">User Experience Focused</h5>
+    
+                <p class="light">By utilizing elements and principles of Material Design, we were able to create a framework that incorporates components and animations that provide more feedback to users. Additionally, a single underlying responsive system across all platforms allow for a more unified user experience.</p>
+              </div>
+            </div>
+    
+            <div class="col s12 m4">
+              <div class="icon-block">
+                <h2 class="center brown-text"><i class="material-icons">settings</i></h2>
+                <h5 class="center">Easy to work with</h5>
+    
+                <p class="light">We have provided detailed documentation as well as specific code examples to help new users get started. We are also always open to feedback and can answer any questions a user may have about Materialize.</p>
+              </div>
+            </div>
+          </div>
+    
+        </div>
+      </div>
 
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

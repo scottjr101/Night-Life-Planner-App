@@ -59,19 +59,21 @@
 
         ev.preventDefault();
 
-        let TMapikey = "f7iOI1K6ZSelrJQmQ9kZrXMGns1biEKR";
+        const TMapikey = "f7iOI1K6ZSelrJQmQ9kZrXMGns1biEKR";
+        const TMevents = "/discovery/v2/events";
         //default postal code
         let TMstart = $("#tm-start-date-input").val().trim();
         let TMend = $("#tm-end-date-input").val().trim();        
         let TMcity = $("#tm-city-input").val().trim();;        
         // let TMevents = "/discovery/v2/attractions";
-        let TMevents = "/discovery/v2/events";
 
-        //let TMqueryURL = `https://app.ticketmaster.com${TMevents}.json?apikey=${TMapikey}&postalCode=${TMpostCode}&radius=${TMradius}`
+        console.log(TMend);
+        console.log(TMstart);
         
-        //the dmaId is the code ticket master uses for cities, 220 = atlanta &city=${TMcity} &enddatetime=${TMstart}
-        let TMqueryURL = `https://app.ticketmaster.com${TMevents}.json?apikey=${TMapikey}&dmaId=220&localStartDateTime=${TMstart}T14:00:00&localEndDateTime=${TMend}T14:00:00&sort=date,name,asc`
-        
+        //the dmaId is the code ticket master uses for cities, 220 = atlanta 
+        let TMqueryURL = `https://app.ticketmaster.com${TMevents}.json?apikey=${TMapikey}&startDateTime=${TMstart}T08:00:00Z&endDateTime=${TMend}T23:00:00Z&city=${TMcity}&size=30`
+        let eventNames = [];
+        let eventData = [];
             $.ajax({
                 url: TMqueryURL,
                 method: "GET",
@@ -79,24 +81,92 @@
             }).then((response)=> {
                 console.log(response);
                 const TM = response._embedded.events
-
                 for (let a = 0; a < TM.length; a++){
-                    console.log(a);
-                    
-                    let nDiv = $("<div>");
-                    let nImg = $("<img>");
-                    
-                    nImg.attr("src", TM[a].images[0].url);
-                    
-                    $("#local-events").append(nDiv);
-                    $(nDiv).append(nImg)
-                }
-                
-            });
-        
-        
-    });
+                    let name = TM[a].name;
 
+                    let used = eventNames.indexOf(name) > 0;
+                    let c = eventNames.indexOf(name);
+                    console.log(c)
+                    
+                    if (!used){
+                        eventNames.push(name);
+                        //console.log(eventNames)
+
+                        let imageUrl = String;
+                        let imgHeight = 0;
+
+                        for (let b = 0; b < TM[a].images.length; b++){
+                            if (TM[a].images[b].height >= 300 && TM[a].images[b].height > imgHeight){
+                                imgHeight = TM[a].images[b].height;
+                                imageUrl = TM[a].images[b].url;
+                            }
+                        }
+
+                        let nDiv = $("<div>");
+                        nDiv.addClass('eventDiv')
+                        nDiv.attr('data-id', a)
+                        eventData.push(a)
+                        
+                        let nImg = $("<img>");
+                        nImg.attr("src", imageUrl);
+                        nImg.addClass('eventImg')
+                        
+                        let nP = $("<p>")
+                        nP.text(TM[a].name)
+                        
+                        $("#local-events").append(nDiv);
+                        $(nDiv).append(nP)
+                        $(nDiv).append(nImg)
+                    }else{
+                        console.log(name)
+                        let div = $("<div>")
+                        div.text("test " + a)
+                        $(`[data-id="${c}]`).append(div);
+                        console.log($(`[data-id="${c}]`))
+                    }
+
+                };
+
+                
+            });//then
+        
+        
+    });//click events
+    $("#add-place-btn").click((barSearch)=>{
+
+        barSearch.preventDefault();
+  
+        // var barKey = "user-key=56127d7074bb1c0676f5c2ffcf0456e7"
+        // var barQueryURL = "https://developers.zomato.com/api/v2.1/search?"
+        // var barCity = "&cities=Atlanta" 
+        // var barsPubs = "&catagories=11"
+  
+      // https://maps.googleapis.com/maps/api/place/textsearch/json?query=bars+in+Atlanta&key=AIzaSyCXm0BKxaJWjRRDLNk7WIgl-dXukR1iVSM
+        
+      $.ajax({  
+        url: "https://developers.zomato.com/api/v2.1/search?q=bars&count=40&sort=rating&order=desc",
+        dataType: 'json',
+        async: true,
+        beforeSend: function(xhr){xhr.setRequestHeader('user-key', 
+        '56127d7074bb1c0676f5c2ffcf0456e7');},  // This inserts the api key into the HTTP header
+      }).then(function (response){
+          console.log(response);
+          // clear search results from DOM
+          $("#movies-view").empty();
+          $("#local-events").empty();
+          $("#view-places").empty();
+          // Iterate through response array
+          for (var b = 0; b < 20; b++){
+            // create html element to hold response object data
+            // var display = $("<div class='bar-search-results'>");
+            // var objectName = response[b].results_found;
+          }
+  
+        
+        // success: function(response) {
+          // }
+      }
+    )})
 
      
-});
+});//Ready
