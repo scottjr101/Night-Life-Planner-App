@@ -101,30 +101,34 @@
                                 imageUrl = TM[a].images[b].url;
                             }
                         }
-                        let cDiv = $("<div>");
-                        cDiv.addClass('bigDiv')
+                        let mainDiv = $("<div>");
+                        mainDiv.addClass('bigDiv')
 
-                        let nDiv = $("<div>");
-                        nDiv.addClass('eventDiv card blue-grey darken-1 nextDiv');
-                        nDiv.attr('data-id', a);
+                        let cardDiv = $("<div>");
+                        cardDiv.addClass('eventDiv card blue-grey darken-1 nextDiv');
+                        cardDiv.attr('data-id', a);
                         eventData.push(a);
 
-                        let sDiv = $("<div>");
-                        sDiv.addClass('card-content imgDiv');
+                        let contentDiv = $("<div>");
+                        contentDiv.addClass('card-content imgDiv');
                         
-                        let nP = $("<span>");
-                        nP.addClass('card-title');
-                        nP.text(TM[a].name);
+                        let spanTitle = $("<span>");
+                        spanTitle.addClass('card-title');
+                        spanTitle.text(TM[a].name);
                         
-                        let nImg = $("<img>");
-                        nImg.attr("src", imageUrl);
-                        nImg.addClass('eventImg');                        
+                        let eventImage = $("<img>");
+                        eventImage.attr("src", imageUrl);
+                        eventImage.addClass('eventImg');   
                         
-                        $("#local-events").append(cDiv);
-                        $(cDiv).append(nDiv);
-                        $(nDiv).append(sDiv);
-                        $(sDiv).append(nP);
-                        $(sDiv).append(nImg);
+                        let aDiv = $('<div>');
+                        aDiv.addClass('card-action');
+                        
+                        
+                        $("#local-events").append(mainDiv);
+                        $(mainDiv).append(cardDiv);
+                        $(cardDiv).append(contentDiv);
+                        $(contentDiv).append(spanTitle);
+                        $(contentDiv).append(eventImage);
 
                         
                     }else{
