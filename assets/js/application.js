@@ -134,7 +134,7 @@ $(document).ready(() => {
                         let aDiv = $('<div>');
                         aDiv.addClass('card-action');
 
-                        let ticketLink = $("<a>");
+                        let ticketLink = $("<a>")
                         ticketLink.attr('href', TM[a].url);
                         ticketLink.attr('target', '_blank');
                         ticketLink.text('Ticket Link');
