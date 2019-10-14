@@ -31,3 +31,6 @@ p {
 #infoboard {
     background-color: cornflowerblue;
 }
+.eventImg{
+    max-width: 500px;
+}
