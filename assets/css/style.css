@@ -13,6 +13,8 @@ header{
 .movie_view {
     padding: 10px 10px 10px 10px;
     display: inline-block;
+    height: 350px;
+    width: 300px;
 }
 #movies-view {
     text-align: center;
@@ -22,21 +24,14 @@ p {
     padding: 0px 0px 0px 0px;
     margin: 1px 1px 1px 1px;
 }
-.showArea {
-    width: 250px;
-    height: 400px;
-    overflow: scroll;
-    border: solid 1px black
-}
 #infoboard {
     background-color: cornflowerblue;
 }
+
+/* Events */
 .eventImg{
     max-width: 300px;
 }
-/* .eventImg:hover{
-    opacity: .75;
-} */
 .eventDiv {
     position: relative;
     text-align: center;
@@ -48,15 +43,15 @@ p {
     left: 50%;
     transform: translate(-50%, -50%);
 }
-/* .eventInfo:hover {
-    opacity: 1;
-    background-color: darkgray;
-} */
-.bigDiv {
+#local-events{
     text-align: center;
 
 }
+.bigDiv {
+    padding: 10px 10px 10px 10px;
+    display: inline-block;
+}
 
 .nextDiv {
-    display: inline-block;
+    max-width: 400px;
 }

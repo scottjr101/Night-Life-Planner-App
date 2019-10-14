@@ -1,58 +1,59 @@
 // (function($){
 //     $(function(){
-  
+
 //       $('.sidenav').sidenav();
 //       $('.parallax').parallax();
-  
+
 //     }); 
-    // end of document ready
-    //Materialize Modals
-    $(document).on('DOMContentLoaded', () => {
-    
-    let modals = $('.modal');
-    M.Modal.init(modals);
-    
+// end of document ready
+//Materialize Modals
+$(document).on('DOMContentLoaded', () => {
+
+  let modals = $('.modal');
+  M.Modal.init(modals);
+
+});
+$(document).ready(() => {
+
+  $("#add-movie-btn").click((event) => {
+
+    event.preventDefault();
+
+    var startDate = $("#start-date-input").val().trim();
+    var zipCode = $("#zip-code-input").val().trim();
+    var radius = $("#radius-input").val().trim();
+    var queryURL = "http://data.tmsapi.com/v1.1/movies/showings?startDate=" + startDate + "&zip=" + zipCode + "&radius=" + radius + "&api_key=h22mr6gbzmesjmx4jb5qt67b"
+
+    $.ajax({
+      url: queryURL,
+      method: "GET"
+    }).then(function (response) {
+      console.log(response);
+      $("#movies-view").empty();
+      for (var i = 0; i < 100; i++) {
+        var div = $("<div class='movie_view'>");
+        var title = response[i].title;
+        var rating = response[i].ratings[0].code;
+        var p1 = $("<p>").text(title + ' rated: ' + rating);
+        div.append(p1);
+        var poster = "https://cuso.tmsimg.com/" + response[i].preferredImage.uri;
+        var image = $('<img>');
+        image.attr('src', poster);
+        div.append(image);
+        div.append('<br>');
+        var genres = response[i].genres;
+        var p2 = $("<p>").text('Genre(s): ' + genres);
+        div.append(p2);
+        var shortDescrip = response[i].shortDescription;
+        var p3 = $("<p>").text('plot: ' + shortDescrip);
+        div.append(p3);
+        div.append('<br>');
+        $("#movies-view").append(div);
+
+      };
     });
-    $(document).ready(()=>{
-
-    $("#add-movie-btn").click((event)=>{
-
-      event.preventDefault();
-
-      var startDate = $("#start-date-input").val().trim();
-      var zipCode = $("#zip-code-input").val().trim();
-      var radius = $("#radius-input").val().trim();
-      var queryURL = "http://data.tmsapi.com/v1.1/movies/showings?startDate=" + startDate + "&zip=" + zipCode + "&radius=" + radius + "&api_key=h22mr6gbzmesjmx4jb5qt67b"
-       
-      $.ajax({
-            url: queryURL,
-            method: "GET"
-          }).then(function (response) {
-            console.log(response);
-            $("#movies-view").empty();
-            for (var i = 0; i < 100; i++) {
-              var div = $("<div class='movie_view'>");
-              var title = response[i].title;
-              var p = $("<p>").text(title);
-              div.append(p);
-              var poster = "https://cuso.tmsimg.com/" + response[i].preferredImage.uri;
-              var image = $('<img>');
-              image.attr('src', poster);
-              div.append(image);
-              div.append('<br>');
-              var a = $("<a href='../../showtimes.html'>");
-              a.text("Click here for showtimes");
-              div.append(a);
-              $("#movies-view").append(div);
-      
-            };
-
-    
-
-    });
-
-    });
-
+  });
+ 
     $("#add-event-btn").click((ev)=>{
         
         M.Modal.getInstance($("#modal-events")).close();
@@ -101,30 +102,34 @@
                                 imageUrl = TM[a].images[b].url;
                             }
                         }
-                        let cDiv = $("<div>");
-                        cDiv.addClass('col s4 bigDiv')
+                        let mainDiv = $("<div>");
+                        mainDiv.addClass('bigDiv')
 
-                        let nDiv = $("<div>");
-                        nDiv.addClass('eventDiv card blue-grey darken-1 nextDiv');
-                        nDiv.attr('data-id', a);
+                        let cardDiv = $("<div>");
+                        cardDiv.addClass('eventDiv card blue-grey darken-1 nextDiv');
+                        cardDiv.attr('data-id', a);
                         eventData.push(a);
 
-                        let sDiv = $("<div>");
-                        sDiv.addClass('card-content imgDiv');
+                        let contentDiv = $("<div>");
+                        contentDiv.addClass('card-content imgDiv');
                         
-                        let nP = $("<span>");
-                        nP.addClass('card-title');
-                        nP.text(TM[a].name);
+                        let spanTitle = $("<span>");
+                        spanTitle.addClass('card-title');
+                        spanTitle.text(TM[a].name);
                         
-                        let nImg = $("<img>");
-                        nImg.attr("src", imageUrl);
-                        nImg.addClass('eventImg');                        
+                        let eventImage = $("<img>");
+                        eventImage.attr("src", imageUrl);
+                        eventImage.addClass('eventImg');   
                         
-                        $("#local-events").append(cDiv);
-                        $(cDiv).append(nDiv);
-                        $(nDiv).append(sDiv);
-                        $(sDiv).append(nP);
-                        $(sDiv).append(nImg);
+                        let aDiv = $('<div>');
+                        aDiv.addClass('card-action');
+                        
+                        
+                        $("#local-events").append(mainDiv);
+                        $(mainDiv).append(cardDiv);
+                        $(cardDiv).append(contentDiv);
+                        $(contentDiv).append(spanTitle);
+                        $(contentDiv).append(eventImage);
 
                         
                     }else{
@@ -177,7 +182,9 @@
           // }
         }
 
-    )})
+      
 
-});//Ready
-         
+    )
+  })
+
+}); //Ready
