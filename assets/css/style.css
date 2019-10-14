@@ -27,12 +27,11 @@ p {
 #infoboard {
     background-color: cornflowerblue;
 }
+
+/* Events */
 .eventImg{
     max-width: 300px;
 }
-/* .eventImg:hover{
-    opacity: .75;
-} */
 .eventDiv {
     position: relative;
     text-align: center;
@@ -44,10 +43,6 @@ p {
     left: 50%;
     transform: translate(-50%, -50%);
 }
-/* .eventInfo:hover {
-    opacity: 1;
-    background-color: darkgray;
-} */
 #local-events{
     text-align: center;
 
