@@ -102,7 +102,7 @@
                             }
                         }
                         let cDiv = $("<div>");
-                        cDiv.addClass('col s4 bigDiv')
+                        cDiv.addClass('bigDiv')
 
                         let nDiv = $("<div>");
                         nDiv.addClass('eventDiv card blue-grey darken-1 nextDiv');
