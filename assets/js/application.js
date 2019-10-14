@@ -109,30 +109,27 @@
     // https://maps.googleapis.com/maps/api/place/textsearch/json?query=bars+in+Atlanta&key=AIzaSyCXm0BKxaJWjRRDLNk7WIgl-dXukR1iVSM
       
     $.ajax({  
-      url: "https://developers.zomato.com/api/v2.1/search?q=bars&count=30&sort=rating&order=desc",
+      url: "https://developers.zomato.com/api/v2.1/search?q=bars&count=40&sort=rating&order=desc",
       dataType: 'json',
       async: true,
       beforeSend: function(xhr){xhr.setRequestHeader('user-key', 
       '56127d7074bb1c0676f5c2ffcf0456e7');},  // This inserts the api key into the HTTP header
-      success: function(response) { console.log(response) } });
-    
-    
-    
-    
-    
-    // $.ajax({
-    //   url: barQueryURL + barKey + barCity + barsPubs,
-    //   method: "GET"
-    // }).then(function(response){
-    //   console.log(response);
+    }).then(function (response){
+        console.log(response);
+        // clear search results from DOM
+        $("#movies-view").empty();
+        $("#local-events").empty();
+        $("#view-places").empty();
+        // Iterate through response array
+        for (var b = 0; b < 20; b++){
+          // create html element to hold response object data
+          // var display = $("<div class='bar-search-results'>");
+          // var objectName = response[b].results_found;
+        }
 
-    // })
-
-    });
-        
-
-        
-
-
-     
+      
+      // success: function(response) {
+        // }
+    }
+  )})
 });
