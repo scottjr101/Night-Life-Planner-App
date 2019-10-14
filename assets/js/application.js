@@ -95,25 +95,38 @@
                 });
               });
                 
-    // // Google Places Search
+    // // ZOMATO Search
 
     $("#add-place-btn").click((barSearch)=>{
 
       barSearch.preventDefault();
 
-      var barKey = "&key=AIzaSyCXm0BKxaJWjRRDLNk7WIgl-dXukR1iVSM"
-      var barQueryURL = "https://maps.googleapis.com/maps/api/place/textsearch/json?"
-      var barZipSearch = "&query=bars+" + $("#g-zip-code-input").val().trim()
-      
+      // var barKey = "user-key=56127d7074bb1c0676f5c2ffcf0456e7"
+      // var barQueryURL = "https://developers.zomato.com/api/v2.1/search?"
+      // var barCity = "&cities=Atlanta" 
+      // var barsPubs = "&catagories=11"
+
     // https://maps.googleapis.com/maps/api/place/textsearch/json?query=bars+in+Atlanta&key=AIzaSyCXm0BKxaJWjRRDLNk7WIgl-dXukR1iVSM
       
-    $.ajax({
-      url: barQueryURL + barKey + barZipSearch,
-      method: "GET"
-    }).then(function(response){
-      console.log(response);
-      
-    })
+    $.ajax({  
+      url: "https://developers.zomato.com/api/v2.1/search?q=bars&count=30&sort=rating&order=desc",
+      dataType: 'json',
+      async: true,
+      beforeSend: function(xhr){xhr.setRequestHeader('user-key', 
+      '56127d7074bb1c0676f5c2ffcf0456e7');},  // This inserts the api key into the HTTP header
+      success: function(response) { console.log(response) } });
+    
+    
+    
+    
+    
+    // $.ajax({
+    //   url: barQueryURL + barKey + barCity + barsPubs,
+    //   method: "GET"
+    // }).then(function(response){
+    //   console.log(response);
+
+    // })
 
     });
         
