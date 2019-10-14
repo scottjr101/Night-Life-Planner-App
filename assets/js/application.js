@@ -59,21 +59,21 @@
 
         ev.preventDefault();
 
-        let TMapikey = "f7iOI1K6ZSelrJQmQ9kZrXMGns1biEKR";
+        const TMapikey = "f7iOI1K6ZSelrJQmQ9kZrXMGns1biEKR";
+        const TMevents = "/discovery/v2/events";
         //default postal code
         let TMstart = $("#tm-start-date-input").val().trim();
         let TMend = $("#tm-end-date-input").val().trim();        
         let TMcity = $("#tm-city-input").val().trim();;        
         // let TMevents = "/discovery/v2/attractions";
-        let TMevents = "/discovery/v2/events";
 
         console.log(TMend);
         console.log(TMstart);
-        //let TMqueryURL = `https://app.ticketmaster.com${TMevents}.json?apikey=${TMapikey}&postalCode=${TMpostCode}&radius=${TMradius}`
         
-        //the dmaId is the code ticket master uses for cities, 220 = atlanta &city=${TMcity} &enddatetime=${TMstart}
-        let TMqueryURL = `https://app.ticketmaster.com${TMevents}.json?apikey=${TMapikey}&startDateTime=${TMstart}T08:00:00Z&endDateTime=${TMend}T23:00:00Z&city=${TMcity}`
-        
+        //the dmaId is the code ticket master uses for cities, 220 = atlanta 
+        let TMqueryURL = `https://app.ticketmaster.com${TMevents}.json?apikey=${TMapikey}&startDateTime=${TMstart}T08:00:00Z&endDateTime=${TMend}T23:00:00Z&city=${TMcity}&size=30`
+        let eventNames = [];
+        let eventData = [];
             $.ajax({
                 url: TMqueryURL,
                 method: "GET",
@@ -82,36 +82,57 @@
                 console.log(response);
                 const TM = response._embedded.events
                 for (let a = 0; a < TM.length; a++){
-                    //debugger;
-                    let imageUrl = String;
-                    let imgHeight = 0;
-                    for (let b = 0; b < TM[a].images.length; b++){
-                        if (TM[a].images[b].height >= 300 && TM[a].images[b].height > imgHeight){
-                            imgHeight = TM[a].images[b].height;
-                            imageUrl = TM[a].images[b].url;
-                        }
-                    }
-                    let nDiv = $("<div>");
-                    
-                    
-                    let nImg = $("<img>");
-                    nImg.attr("src", imageUrl);
-                    nImg.addClass('eventImg')
-                    
-                    let nP = $("<p>")
-                    nP.text(TM[a].name)
-                    
-                    $("#local-events").append(nDiv);
-                    $(nDiv).append(nP)
-                    $(nDiv).append(nImg)
+                    let name = TM[a].name;
 
-                }
+                    let used = eventNames.indexOf(name) > 0;
+                    let c = eventNames.indexOf(name);
+                    console.log(c)
+                    
+                    if (!used){
+                        eventNames.push(name);
+                        //console.log(eventNames)
+
+                        let imageUrl = String;
+                        let imgHeight = 0;
+
+                        for (let b = 0; b < TM[a].images.length; b++){
+                            if (TM[a].images[b].height >= 300 && TM[a].images[b].height > imgHeight){
+                                imgHeight = TM[a].images[b].height;
+                                imageUrl = TM[a].images[b].url;
+                            }
+                        }
+
+                        let nDiv = $("<div>");
+                        nDiv.addClass('eventDiv')
+                        nDiv.attr('data-id', a)
+                        eventData.push(a)
+                        
+                        let nImg = $("<img>");
+                        nImg.attr("src", imageUrl);
+                        nImg.addClass('eventImg')
+                        
+                        let nP = $("<p>")
+                        nP.text(TM[a].name)
+                        
+                        $("#local-events").append(nDiv);
+                        $(nDiv).append(nP)
+                        $(nDiv).append(nImg)
+                    }else{
+                        console.log(name)
+                        let div = $("<div>")
+                        div.text("test " + a)
+                        $(`[data-id="${c}]`).append(div);
+                        console.log($(`[data-id="${c}]`))
+                    }
+
+                };
+
                 
-            });
+            });//then
         
         
-    });
+    });//click events
 
 
      
-});
+});//Ready

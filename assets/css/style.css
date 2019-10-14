@@ -34,3 +34,21 @@ p {
 .eventImg{
     max-width: 500px;
 }
+.eventImg:hover{
+    opacity: .75;
+}
+.eventDiv {
+    position: relative;
+    text-align: center;
+    color: white;
+}
+.eventInfo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+}
+.eventInfo:hover {
+    opacity: 1;
+}
