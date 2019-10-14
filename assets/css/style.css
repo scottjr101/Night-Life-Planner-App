@@ -1,8 +1,5 @@
 body{
-    
-}
-body{
-    
+    background-color: yellowgreen;
     text-align: center;
     background-image: url("../images/background-concert.jpg");
     background-size: 100%;
@@ -62,8 +59,4 @@ p {
 
 .nextDiv {
     display: inline-block;
-}
-
-.imgDiv {
-
 }
