@@ -123,6 +123,16 @@ $(document).ready(() => {
                         
                         let aDiv = $('<div>');
                         aDiv.addClass('card-action');
+
+                        let ticketLink = $("<a>")
+                        ticketLink.attr('href', TM[a].url);
+                        ticketLink.attr('target', '_blank');
+                        ticketLink.text('Ticket Link');
+
+                        let date = new Date(TM[a].dates.start.dateTime);
+                        //let newDate = date.toString('dd-MM-yy');
+                        let timeDate = $("<p>");
+                        timeDate.text(date);
                         
                         
                         $("#local-events").append(mainDiv);
@@ -130,6 +140,8 @@ $(document).ready(() => {
                         $(cardDiv).append(contentDiv);
                         $(contentDiv).append(spanTitle);
                         $(contentDiv).append(eventImage);
+                        $(cardDiv).append(ticketLink)
+                        $(cardDiv).append(timeDate)
 
                         
                     }else{
