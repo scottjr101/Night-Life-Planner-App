@@ -66,12 +66,13 @@
         let TMcity = $("#tm-city-input").val().trim();;        
         // let TMevents = "/discovery/v2/attractions";
         let TMevents = "/discovery/v2/events";
+
         console.log(TMend);
         console.log(TMstart);
         //let TMqueryURL = `https://app.ticketmaster.com${TMevents}.json?apikey=${TMapikey}&postalCode=${TMpostCode}&radius=${TMradius}`
         
         //the dmaId is the code ticket master uses for cities, 220 = atlanta &city=${TMcity} &enddatetime=${TMstart}
-        let TMqueryURL = `https://app.ticketmaster.com${TMevents}.json?apikey=${TMapikey}&startDateTime=${TMstart}T14:00:00Z&endDateTime=${TMend}T14:00:00Z&city=${TMcity}`
+        let TMqueryURL = `https://app.ticketmaster.com${TMevents}.json?apikey=${TMapikey}&startDateTime=${TMstart}T08:00:00Z&endDateTime=${TMend}T23:00:00Z&city=${TMcity}`
         
             $.ajax({
                 url: TMqueryURL,
@@ -80,16 +81,30 @@
             }).then((response)=> {
                 console.log(response);
                 const TM = response._embedded.events
-
                 for (let a = 0; a < TM.length; a++){
-                    
+                    //debugger;
+                    let imageUrl = String;
+                    let imgHeight = 0;
+                    for (let b = 0; b < TM[a].images.length; b++){
+                        if (TM[a].images[b].height >= 300 && TM[a].images[b].height > imgHeight){
+                            imgHeight = TM[a].images[b].height;
+                            imageUrl = TM[a].images[b].url;
+                        }
+                    }
                     let nDiv = $("<div>");
-                    let nImg = $("<img>");
                     
-                    nImg.attr("src", TM[a].images[0].url);
+                    
+                    let nImg = $("<img>");
+                    nImg.attr("src", imageUrl);
+                    nImg.addClass('eventImg')
+                    
+                    let nP = $("<p>")
+                    nP.text(TM[a].name)
                     
                     $("#local-events").append(nDiv);
+                    $(nDiv).append(nP)
                     $(nDiv).append(nImg)
+
                 }
                 
             });
