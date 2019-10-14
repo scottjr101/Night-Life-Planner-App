@@ -5,7 +5,7 @@
         <title>Night Planner</title>
         <!-- Required meta tags -->
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
         <!-- Compiled and minified JavaScript -->
@@ -16,11 +16,12 @@
             
     </head>
   <body>
-      
+      <div class="navbar-fixed">
         <nav class="z-depth-0 grey lighten-4">
-                <div class="nav-wrapper container">
-                  <a href="#" class="brand-logo">
-                    <img src="" style="width: 180px; margin-top: 10px;">
+                <div class="container">
+                  <!-- <a href="#" class="brand-logo">Nightlife Planner</a> -->
+                  <a href="" data-target="mobile-nav" class="sidenav-trigger">
+                    <i class="material-icons">Menu</i>
                   </a>
                   <ul id="nav-mobile" class="right hide-on-med-and-down">
                       <li class="logged-in">
@@ -48,7 +49,7 @@
                   </ul>
                 </div>
               </nav>
-
+      </div>
     <!--Sign up modal-->
         <div id="modal-signup" class="modal">
             <div class="modal-content">
