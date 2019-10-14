@@ -35,10 +35,6 @@ align-items: center;
     overflow: auto;
 }
 
-p {
-    padding: 0px 0px 0px 0px;
-    margin: 1px 1px 1px 1px;
-}
 .showArea {
     width: 250px;
     height: 400px;
