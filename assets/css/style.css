@@ -21,6 +21,12 @@ header{
     text-align: center;
 }
 
+.bar-display {
+    padding: 10px 20px 10px 20px;
+    display: inline-block;
+    background: grey;
+}
+
 p {
     padding: 0px 0px 0px 0px;
     margin: 1px 1px 1px 1px;
