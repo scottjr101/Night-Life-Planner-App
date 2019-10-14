@@ -48,11 +48,15 @@ p {
     opacity: 1;
     background-color: darkgray;
 } */
-.bigDiv {
+#local-events{
     text-align: center;
 
 }
+.bigDiv {
+    padding: 10px 10px 10px 10px;
+    display: inline-block;
+}
 
 .nextDiv {
-    display: inline-block;
+    max-width: 400px;
 }
