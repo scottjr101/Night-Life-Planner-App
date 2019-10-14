@@ -80,7 +80,7 @@
 
             }).then((response)=> {
                 console.log(response);
-                const TM = response._embedded.events
+                const TM = response._embedded.events;
                 for (let a = 0; a < TM.length; a++){
                     let name = TM[a].name;
 
@@ -101,28 +101,38 @@
                                 imageUrl = TM[a].images[b].url;
                             }
                         }
+                        let cDiv = $("<div>");
+                        cDiv.addClass('col s4 bigDiv')
 
                         let nDiv = $("<div>");
-                        nDiv.addClass('eventDiv')
-                        nDiv.attr('data-id', a)
-                        eventData.push(a)
+                        nDiv.addClass('eventDiv card blue-grey darken-1 nextDiv');
+                        nDiv.attr('data-id', a);
+                        eventData.push(a);
+
+                        let sDiv = $("<div>");
+                        sDiv.addClass('card-content imgDiv');
+                        
+                        let nP = $("<span>");
+                        nP.addClass('card-title');
+                        nP.text(TM[a].name);
                         
                         let nImg = $("<img>");
                         nImg.attr("src", imageUrl);
-                        nImg.addClass('eventImg')
+                        nImg.addClass('eventImg');                        
                         
-                        let nP = $("<p>")
-                        nP.text(TM[a].name)
+                        $("#local-events").append(cDiv);
+                        $(cDiv).append(nDiv);
+                        $(nDiv).append(sDiv);
+                        $(sDiv).append(nP);
+                        $(sDiv).append(nImg);
+
                         
-                        $("#local-events").append(nDiv);
-                        $(nDiv).append(nP)
-                        $(nDiv).append(nImg)
                     }else{
-                        console.log(name)
-                        let div = $("<div>")
-                        div.text("test " + a)
-                        $(`[data-id="${c}]`).append(div);
-                        console.log($(`[data-id="${c}]`))
+                        console.log(name);
+                        // let div = $("<div>");
+                        // div.text("test " + a);
+                        // div.addClass("eventInfo");
+                        // $(`[data-id="${c}]`).append(div);
                     }
 
                 };
@@ -165,8 +175,9 @@
         
         // success: function(response) {
           // }
-      }
+        }
+
     )})
 
-     
 });//Ready
+         

@@ -37,3 +37,16 @@ FEATURES
 3:2  LOCATION SERVICES  
 3:2  Allows users to find events/restraunts/movies in their area  
 3:2  Give details on times and travel in plan  
+
+
+<div class="card blue-grey darken-1">
+        <div class="card-content white-text">
+          <span class="card-title">Card Title</span>
+          <p>I am a very simple card. I am good at containing small bits of information.
+          I am convenient because I require little markup to use effectively.</p>
+        </div>
+        <div class="card-action">
+          <a href="#">This is a link</a>
+          <a href="#">This is a link</a>
+        </div>
+      </div>
