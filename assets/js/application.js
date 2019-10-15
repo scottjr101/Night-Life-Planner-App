@@ -190,6 +190,8 @@ $(document).ready(() => {
         
     });//click events
     $("#add-place-btn").click((barSearch)=>{
+        
+        M.Modal.getInstance($("#modal-favorites")).close();
 
         barSearch.preventDefault();
   
