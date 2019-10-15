@@ -46,8 +46,10 @@ $(document).ready(() => {
             var div = $("<div class='movie_view blue-grey'>");
             var title = response[i].title;
             var rating = response[i].ratings[0].code;
-            var p1 = $("<p>").text(title + ' rated: ' + rating);
+            var p1 = $("<h5>").text(title);
             div.append(p1);
+            var p11 = $("<p>").text('Rated: ' + rating);
+            div.append(p11);
             var poster = "https://cuso.tmsimg.com/" + response[i].preferredImage.uri;
             var image = $('<img>');
             image.attr('src', poster);
@@ -57,7 +59,7 @@ $(document).ready(() => {
             var p2 = $("<p>").text('Genre(s): ' + genres);
             div.append(p2);
             var shortDescrip = response[i].shortDescription;
-            var p3 = $("<p>").text('plot: ' + shortDescrip);
+            var p3 = $("<p>").text('Plot: ' + shortDescrip);
             div.append(p3);
             var actors = response[i].topCast;
             var p4 = $("<p>").text('Cast: ' + actors);
