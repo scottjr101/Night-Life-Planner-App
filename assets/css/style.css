@@ -61,3 +61,6 @@ p {
 .topLine {
     text-shadow: 4px 2px cadetblue;
 }
+.section-follow .fa-4x {
+    margin: 10px 15px;
+}

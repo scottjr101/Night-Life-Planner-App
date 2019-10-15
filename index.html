@@ -26,26 +26,27 @@
                   </a>
                   <ul class="right hide-on-med-and-down">
                       <li class="logged-in">
-                        <a href="#" class="black-text modal-trigger" data-target="modal-account">Account</a>
-                      </li>
-                      <li class="logged-in">
-                        <a href="#" class="black-text" id="logout">Logout</a>
-                      </li>
-                      <li class="logged-in">
                             <a href="#" class="black-text modal-trigger" data-target="modal-events">Events</a>
                         </li>
                       <li class="logged-in">
                             <a href="#" class="black-text modal-trigger" data-target="modal-movies">Movies</a>
                         </li>
                       <li class="logged-in">
-                            <a href="#" class="black-text modal-trigger" data-target="modal-places">Bars & Clubs</a>
+                            <a href="#" class="black-text modal-trigger" data-target="modal-places">Food/Drinks</a>
                         </li>
-                      <li class="logged-out">
-                        <a href="#" class="grey-text modal-trigger" data-target="modal-login">Login</a>
+                      <li class="logged-in">
+                        <a href="#" class="grey-text text-lighten-2 modal-trigger" data-target="modal-account">Account</a>
                       </li>
                       <li class="logged-out">
-                        <a href="#" class="grey-text modal-trigger" data-target="modal-signup">Sign up</a>
+                        <a href="#" class="grey-text text-lighten-2 modal-trigger" data-target="modal-login">Login</a>
                       </li>
+                      <li class="logged-out">
+                        <a href="#" class="grey-text text-lighten-2 modal-trigger" data-target="modal-signup">Sign up</a>
+                      </li>
+                      <li class="logged-in">
+                        <a href="#" class="grey-text text-lighten-2" id="logout">Logout</a>
+                      </li>
+
                     </span>
                   </ul>
                 </div>
@@ -55,25 +56,25 @@
 
       <ul id="mobile-nav" class="sidenav">
           <li class="logged-in">
-            <a href="#" class="black-text modal-trigger" data-target="modal-account">Account</a>
-          </li>
-          <li class="logged-in">
-            <a href="#" class="black-text" id="logout">Logout</a>
-          </li>
-          <li class="logged-in">
                 <a href="#" class="black-text modal-trigger" data-target="modal-events">Events</a>
             </li>
           <li class="logged-in">
                 <a href="#" class="black-text modal-trigger" data-target="modal-movies">Movies</a>
             </li>
           <li class="logged-in">
-                <a href="#" class="black-text modal-trigger" data-target="modal-places">Bars & Clubs</a>
+                <a href="#" class="black-text modal-trigger" data-target="modal-places">Food/Drinks</a>
             </li>
+            <li class="logged-in">
+            <a href="#" class="grey-text modal-trigger" data-target="modal-account">Account</a>
+          </li>
           <li class="logged-out">
             <a href="#" class="grey-text modal-trigger" data-target="modal-login">Login</a>
           </li>
           <li class="logged-out">
             <a href="#" class="grey-text modal-trigger" data-target="modal-signup">Sign up</a>
+          </li>
+          <li class="logged-in">
+            <a href="#" class="grey-text" id="logout">Logout</a>
           </li>
         </span>
       </ul>
@@ -214,7 +215,7 @@
         
       
     <!-- Optional JavaScript -->
-    <header class="header center teal-text text-darken-2">Plan Your Experience</header>
+    <header class="header center teal-text text-darken-2 topLine">Plan Your Experience</header>
 
     <section class="section section-icon grey lighten-4 center">
         <div class="container">
@@ -236,7 +237,7 @@
             <div class="col s12 m4">
               <div class="card-panel modal-trigger" id="modal-places" data-target="modal-places">
                 <i class="material-icons large teal-text">local_bar</i>
-                <h4>Food/Bars</h4>
+                <h4>Food & Drinks</h4>
                 <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sint, rem!</p>
               </div>
             </div>
@@ -250,7 +251,7 @@
     <div id="view-places"></div>
     </section>
 
-    <div id="index-banner" class="parallax-container">
+    <!-- <div id="index-banner" class="parallax-container"> -->
       <div class="section no-pad-bot">
         <div class="container">
           <br><br>
@@ -258,14 +259,14 @@
           <div class="row center">
             <h5 class="header col s12 light" id="infoboard">A modern way to plan your relaxation.</h5>
           </div>
-          <div class="row center">
+          <!-- <div class="row center"> -->
             <!-- <a href="" id="download-button" class="btn-large waves-effect waves-light teal lighten-1">Get Started</a> -->
-          </div>
-          <br><br>
+          <!-- </div> -->
+          <!-- <br><br> -->
         </div>
       </div>
-      <div class="parallax"><img src="./assets/images/background-kissing-park.jpg" alt="Unsplashed background img 1"></div>
-    </div>
+      <!-- <div class="parallax"><img src="./assets/images/background-kissing-park.jpg" alt="Unsplashed background img 1"></div> -->
+    <!-- </div> -->
 
     <div class="container">
         <div class="section">
@@ -274,40 +275,66 @@
           <div class="row">
             <div class="col s12 m4">
               <div class="icon-block">
-                <h2 class="center brown-text"><i class="material-icons">flash_on</i></h2>
-                <h5 class="center">Speeds up development</h5>
+                <h2 class="center black-text"><i class="material-icons">event</i></h2>
+                <h5 class="center">Events in your Area</h5>
     
-                <p class="light">We did most of the heavy lifting for you to provide a default stylings that incorporate our custom components. Additionally, we refined animations and transitions to provide a smoother experience for developers.</p>
+                <p class="light">Trying to find a concert or stage performance? This is where you go to get the most out of your local area events. Just select a date range and let us do the scheduling for you!</p>
               </div>
             </div>
     
             <div class="col s12 m4">
               <div class="icon-block">
-                <h2 class="center brown-text"><i class="material-icons">group</i></h2>
-                <h5 class="center">User Experience Focused</h5>
+                <h2 class="center black-text"><i class="material-icons">theaters</i></h2>
+                <h5 class="center">Find a Movie</h5>
     
-                <p class="light">By utilizing elements and principles of Material Design, we were able to create a framework that incorporates components and animations that provide more feedback to users. Additionally, a single underlying responsive system across all platforms allow for a more unified user experience.</p>
+                <p class="light">Looking to find a good show? Here is the place. Find you cinematic event and pick a showtime that fits your schedule. Whether it just hit theaters or is a fun rerun. You can find it here! </p>
               </div>
             </div>
     
             <div class="col s12 m4">
               <div class="icon-block">
-                <h2 class="center brown-text"><i class="material-icons">settings</i></h2>
-                <h5 class="center">Easy to work with</h5>
+                <h2 class="center black-text"><i class="material-icons">local_bar</i></h2>
+                <h5 class="center">Food/Drinks Anytime</h5>
     
-                <p class="light">We have provided detailed documentation as well as specific code examples to help new users get started. We are also always open to feedback and can answer any questions a user may have about Materialize.</p>
+                <p class="light">Do you need a full dinning experience or just late night drinks? Either way this is the spot for you. Easy to find refreshment at your fingertips right here!</p>
               </div>
             </div>
           </div>
     
         </div>
       </div>
+      <section class="section section-follow teal darken-2 white-text center">
+        <div class="container">
+          <div class="row">
+            <div class="col s12">
+              <h4>Follow Nightlife Planner</h4>
+              <p>Follow us on Social Media for Discounts and Gifts</p>
+              <a href="#" class="white-text">
+                <i class="fab fa-facebook fa-4x"></i>
+              </a>
+              <a href="#" class="white-text">
+                  <i class="fab fa-google-plus fa-4x"></i>
+              </a>
+              <a href="#" class="white-text">
+                  <i class="fab fa-twitter fa-4x"></i>
+              </a>
+              <a href="#" class="white-text">
+                  <i class="fab fa-pinterest fa-4x"></i>
+              </a>
+              <a href="#" class="white-text">
+                  <i class="fab fa-linkedin fa-4x"></i>
+              </a>  
+            </div>
+          </div>
+        </div>
+      </section>
 
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
     <script src="./assets/js/application.js"></script>
 
 
