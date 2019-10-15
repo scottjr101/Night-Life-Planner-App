@@ -43,7 +43,7 @@ $(document).ready(() => {
           for (var i = 0; i < 100; i++) {
             var rootId = response[i].rootId;
             if(rootId == 16200311 || rootId == 17093632 || rootId == 17427222 || rootId == 17162880 || rootId == 3543278 || rootId ==17396363  || rootId ==16075521  || rootId ==15758881  || rootId ==17310154  || rootId ==17416958  || rootId ==17473699  || rootId ==17431944  || rootId ==17468984  || rootId ==17356990  || rootId ==17416538  || rootId ==17411885  || rootId ==17442892   || rootId ==16578248) continue ;
-            var div = $("<div class='movie_view'>");
+            var div = $("<div class='movie_view blue-grey'>");
             var title = response[i].title;
             var rating = response[i].ratings[0].code;
             var p1 = $("<p>").text(title + ' rated: ' + rating);
