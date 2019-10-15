@@ -203,9 +203,9 @@ $(document).ready(() => {
             var name = response.restaurants[b].restaurant.name;
             var nameTag = $("<p>").text(name);
             var image = response.restaurants[b].restaurant.thumb;
-            var imageTag = $('<img>');
+            var imageTag = $("<img class='bar-images'>");
             imageTag.attr('src', image);
-            display.append(nameTag, imageTag);
+            display.append(nameTag,"<br>", imageTag);
             $("#view-places").append(display);
 
 

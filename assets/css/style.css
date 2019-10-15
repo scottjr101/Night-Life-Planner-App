@@ -20,19 +20,34 @@ header{
     text-align: center;
 }
 
+.bar-images{
+    display: flex;
+justify-content: center;
+align-items: center;
+}
+
 .bar-display {
-    padding: 10px 20px 10px 20px;
+    height: 300px;
+    width: 230px; 
+    padding: 10px 10px 10px 10px;
     display: inline-block;
     background: grey;
+    overflow: auto;
 }
 
 p {
     padding: 0px 0px 0px 0px;
     margin: 1px 1px 1px 1px;
 }
-/* #infoboard {    
+.showArea {
+    width: 250px;
+    height: 400px;
+    overflow: scroll;
+    border: solid 1px black
+}
+/* #infoboard {
     background-color: cornflowerblue;
-} */
+}  */
 
 /* Events */
 .eventImg{
