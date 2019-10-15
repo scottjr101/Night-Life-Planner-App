@@ -178,14 +178,16 @@ $(document).ready(() => {
         barSearch.preventDefault();
 
         // Create search input and url variables
-        // var citySearch = $("#z-city-input").val().trim();
-        // var keywordSearch = $("#z-keyword-input").val().trim();
+
+// *REMINDER* Check doucmentation for more specific search parameters relating to location
+        var citySearch = $("#z-city-input").val().trim();
+        var keywordSearch = $("#z-keyword-input").val().trim();
         // var zQueryURL = "https://developers.zomato.com/api/v2.1/search?q="+citySearch+"+"+keywordSearch+"&sort=rating&order=desc";
 
-        // "https://developers.zomato.com/api/v2.1/search?entity_id=288&entity_type=city&q=bars+decatur&sort=rating&order=desc",
+        "https://developers.zomato.com/api/v2.1/search?entity_id=288&entity_type=city&q=bars+decatur&sort=rating&order=desc",
         
       $.ajax({  
-        url: "https://developers.zomato.com/api/v2.1/search?entity_id=288&entity_type=city&q=bars+decatur&sort=rating&order=desc",
+        url: "https://developers.zomato.com/api/v2.1/search?q="+citySearch+"+"+keywordSearch+"&sort=rating&order=desc",
         dataType: 'json',
         async: true,
         beforeSend: function(xhr){xhr.setRequestHeader('user-key', 
