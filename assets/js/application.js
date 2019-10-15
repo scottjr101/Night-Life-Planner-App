@@ -176,15 +176,14 @@ $(document).ready(() => {
     $("#add-place-btn").click((barSearch)=>{
 
         barSearch.preventDefault();
-  
-        // var barKey = "user-key=56127d7074bb1c0676f5c2ffcf0456e7"
-        // var barQueryURL = "https://developers.zomato.com/api/v2.1/search?"
-        // var barCity = "&cities=Atlanta" 
-        // var barsPubs = "&catagories=11"
-  
+
+        var citySearch = $("#z-city-input").val().trim();
+        var keywords = $("#z-keyword-input").val().trim();        
+
+        // "https://developers.zomato.com/api/v2.1/search?entity_id=288&entity_type=city&q=bars+decatur&sort=rating&order=desc",
         
       $.ajax({  
-        url: "https://developers.zomato.com/api/v2.1/search?entity_id=288&entity_type=city&q=bars+decatur&sort=rating&order=desc",
+        url: "https://developers.zomato.com/api/v2.1/search?&q=bars+decatur&sort=rating&order=desc",
         dataType: 'json',
         async: true,
         beforeSend: function(xhr){xhr.setRequestHeader('user-key', 
@@ -200,12 +199,27 @@ $(document).ready(() => {
             console.log(response.restaurants[b].restaurant.name);
             // create html element to hold desired response object data
             var display = $("<div class='bar-display'>");
+            // Establishment Name
             var name = response.restaurants[b].restaurant.name;
-            var nameTag = $("<p>").text(name);
+            var nameTag = $("<p id='name-tag'>").text(name);
+            // Type of Cuisine
+            var cuisine = response.restaurants[b].restaurant.cuisines;
+            var cuisineTag = $("<p>").html('<b>Cuisines: </b>' + cuisine);
+            // Address
+            var address = response.restaurants[b].restaurant.location.address;
+            var addressTag = $("<p>").html('<b>Address: </b>' + address);
+            // Rating
+            var rating = response.restaurants[b].restaurant.user_rating.aggregate_rating;
+            var ratingTag = $("<p>").html('<b>Rating: </b>' + rating);
+            // Phone Number
+            var phone = response.restaurants[b].restaurant.phone_numbers;
+            var phoneTag = $("<p>").html('<b>Phone: </b>' + phone);
+            // Establishment Image
             var image = response.restaurants[b].restaurant.thumb;
             var imageTag = $("<img class='bar-images'>");
             imageTag.attr('src', image);
-            display.append(nameTag,"<br>", imageTag);
+            display.append(nameTag,ratingTag,"<br>",imageTag,cuisineTag,addressTag,phoneTag);
+            // Append display content to index
             $("#view-places").append(display);
 
 

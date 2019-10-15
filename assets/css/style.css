@@ -35,6 +35,10 @@ align-items: center;
     overflow: auto;
 }
 
+#name-tag {
+    font-weight: 800;
+}
+
 .showArea {
     width: 250px;
     height: 400px;
