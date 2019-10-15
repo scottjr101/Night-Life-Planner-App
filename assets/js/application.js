@@ -243,7 +243,7 @@ $(document).ready(() => {
           for (var b = 0; b < 20; b++){
             // console.log(response.restaurants[b].restaurant.name);
             // create html element to hold desired response object data
-            var display = $("<div class='bar-display'>");
+            var display = $("<div class='bar-display blue-grey'>");
             // Establishment Name
             var name = response.restaurants[b].restaurant.name;
             var nameTag = $("<p id='name-tag'>").text(name);
