@@ -1,6 +1,6 @@
 body{
-    background-color: yellowgreen;
-    text-align: center;
+    /* background-color: yellowgreen; */
+    /* text-align: center; */
     /* background-image: url("../images/background-kissing-park.jpg"); */
     /* background-size: 100%; */
 }
@@ -25,7 +25,7 @@ p {
     margin: 1px 1px 1px 1px;
 }
 #infoboard {
-    background-color: cornflowerblue;
+    /* background-color: cornflowerblue; */
 }
 
 /* Events */
@@ -54,4 +54,7 @@ p {
 
 .nextDiv {
     max-width: 400px;
+}
+.logo {
+    font-weight: bold;
 }
