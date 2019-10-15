@@ -11,10 +11,12 @@ header{
     color: black;
 }
 .movie_view {
+    overflow: auto;
     padding: 10px 10px 10px 10px;
     display: inline-block;
-    height: 350px;
-    width: 300px;
+    height: 450px;
+    width: 400px;
+    color: white;
 }
 #movies-view {
     text-align: center;
@@ -43,7 +45,7 @@ align-items: center;
     width: 250px;
     height: 400px;
     overflow: scroll;
-    border: solid 1px black
+    border: solid 1px black;
 }
 /* #infoboard {
     background-color: cornflowerblue;

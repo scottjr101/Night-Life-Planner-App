@@ -25,44 +25,50 @@ $(document).on('DOMContentLoaded', () => {
     });
 $(document).ready(() => {
 
-  $("#add-movie-btn").click((event) => {
+    $("#add-movie-btn").click((event) => {
 
-    event.preventDefault();
-
-    var startDate = $("#start-date-input").val().trim();
-    var zipCode = $("#zip-code-input").val().trim();
-    var radius = $("#radius-input").val().trim();
-    var queryURL = "https://data.tmsapi.com/v1.1/movies/showings?startDate=" + startDate + "&zip=" + zipCode + "&radius=" + radius + "&api_key=h22mr6gbzmesjmx4jb5qt67b"
-
-    $.ajax({
-      url: queryURL,
-      method: "GET"
-    }).then(function (response) {
-      console.log(response);
-      $("#movies-view").empty();
-      for (var i = 0; i < 100; i++) {
-        var div = $("<div class='movie_view'>");
-        var title = response[i].title;
-        var rating = response[i].ratings[0].code;
-        var p1 = $("<p>").text(title + ' rated: ' + rating);
-        div.append(p1);
-        var poster = "https://cuso.tmsimg.com/" + response[i].preferredImage.uri;
-        var image = $('<img>');
-        image.attr('src', poster);
-        div.append(image);
-        div.append('<br>');
-        var genres = response[i].genres;
-        var p2 = $("<p>").text('Genre(s): ' + genres);
-        div.append(p2);
-        var shortDescrip = response[i].shortDescription;
-        var p3 = $("<p>").text('plot: ' + shortDescrip);
-        div.append(p3);
-        div.append('<br>');
-        $("#movies-view").append(div);
-
-      };
-    });
-  });
+        event.preventDefault();
+    
+        var startDate = $("#start-date-input").val().trim();
+        var zipCode = $("#zip-code-input").val().trim();
+        var radius = $("#radius-input").val().trim();
+        var queryURL = "https://data.tmsapi.com/v1.1/movies/showings?startDate=" + startDate + "&zip=" + zipCode + "&radius=" + radius + "&api_key=h22mr6gbzmesjmx4jb5qt67b"
+    
+        $.ajax({
+          url: queryURL,
+          method: "GET"
+        }).then(function (response) {
+          console.log(response);
+          $("#movies-view").empty();
+          for (var i = 0; i < 100; i++) {
+            var rootId = response[i].rootId;
+            if(rootId == 16200311 || rootId == 17093632 || rootId == 17427222 || rootId == 17162880 || rootId == 3543278 || rootId ==17396363  || rootId ==16075521  || rootId ==15758881  || rootId ==17310154  || rootId ==17416958  || rootId ==17473699  || rootId ==17431944  || rootId ==17468984  || rootId ==17356990  || rootId ==17416538  || rootId ==17411885  || rootId ==17442892   || rootId ==16578248) continue ;
+            var div = $("<div class='movie_view blue-grey'>");
+            var title = response[i].title;
+            var rating = response[i].ratings[0].code;
+            var p1 = $("<h5>").text(title);
+            div.append(p1);
+            var p11 = $("<p>").text('Rated: ' + rating);
+            div.append(p11);
+            var poster = "https://cuso.tmsimg.com/" + response[i].preferredImage.uri;
+            var image = $('<img>');
+            image.attr('src', poster);
+            div.append(image);
+            div.append('<br>');
+            var genres = response[i].genres;
+            var p2 = $("<p>").text('Genre(s): ' + genres);
+            div.append(p2);
+            var shortDescrip = response[i].shortDescription;
+            var p3 = $("<p>").text('Plot: ' + shortDescrip);
+            div.append(p3);
+            var actors = response[i].topCast;
+            var p4 = $("<p>").text('Cast: ' + actors);
+            div.append(p4);
+            $("#movies-view").append(div);
+    
+          };
+        });
+      });
  
     $("#add-event-btn").click((ev)=>{
         
@@ -153,6 +159,8 @@ $(document).ready(() => {
                         let timeDate = $("<p>");
                         timeDate.text(str);
 
+                        eventImage.attr('data-time', str)
+
                         let eventType = $("<p>")
                         eventType.text(TM[a].classifications[0].genre.name)
                         
@@ -162,9 +170,10 @@ $(document).ready(() => {
                         $(cardDiv).append(contentDiv);
                         $(contentDiv).append(spanTitle);
                         $(contentDiv).append(eventImage);
-                        $(cardDiv).append(ticketLink);
-                        $(cardDiv).append(timeDate);
-                        $(cardDiv).append(eventType)
+                        $(cardDiv).append(aDiv);
+                        $(aDiv).append(ticketLink);
+                        $(aDiv).append(timeDate);
+                        $(aDiv).append(eventType)
 
                         
                     }else{
@@ -183,25 +192,35 @@ $(document).ready(() => {
         
     });//click events
     $("#add-place-btn").click((barSearch)=>{
-        M.Modal.getInstance($("#modal-places")).close();
+
         barSearch.preventDefault();
-
+  
         // Create search input and url variables
-
-// *REMINDER* Check doucmentation for more specific search parameters relating to location
+  
         var citySearch = $("#z-city-input").val().trim();
         var keywordSearch = $("#z-keyword-input").val().trim();
         // var zQueryURL = "https://developers.zomato.com/api/v2.1/search?q="+citySearch+"+"+keywordSearch+"&sort=rating&order=desc";
-
-        "https://developers.zomato.com/api/v2.1/search?entity_id=288&entity_type=city&q=bars+decatur&sort=rating&order=desc",
-        
+  
+  
+      var cityID = String;
+  
+      // ajax call to collect city id
       $.ajax({  
-        url: "https://developers.zomato.com/api/v2.1/search?q="+citySearch+"+"+keywordSearch+"&sort=rating&order=desc",
+        url: `https://developers.zomato.com/api/v2.1/cities?q=${citySearch}`,
         dataType: 'json',
         async: true,
         beforeSend: function(xhr){xhr.setRequestHeader('user-key', 
         '56127d7074bb1c0676f5c2ffcf0456e7');},  // This inserts the api key into the HTTP header
-      }).then(function (response){
+      }).then(function (responseID){
+        console.log(responseID.location_suggestions[0].id);
+        cityID = responseID.location_suggestions[0].id;
+        $.ajax({  
+          url: `https://developers.zomato.com/api/v2.1/search?q=${keywordSearch}&sort=rating&order=desc&entity_id=${cityID}&entity_type=city`,
+          dataType: 'json',
+          async: true,
+          beforeSend: function(xhr){xhr.setRequestHeader('user-key', 
+          '56127d7074bb1c0676f5c2ffcf0456e7');},  // This inserts the api key into the HTTP header
+        }).then(function (response){
           console.log(response);
           // clear search results from DOM
           $("#movies-view").empty();
@@ -234,22 +253,13 @@ $(document).ready(() => {
             display.append(nameTag,ratingTag,"<br>",imageTag,cuisineTag,addressTag,phoneTag);
             // Append display content to index
             $("#view-places").append(display);
-
-
-
-            // console.log(response.restaurants[b].restaurant.thumb);
-            // console.log(response.restaurants[b].restaurant.location.locality);
           }
-  
-        
-        // success: function(response) {
-          // }
-        }
-
-      
-
-    )
-  })
+        })
+      })
+    })
+    $("#fav-close").on('click', ()=>{
+    M.Modal.getInstance($("#modal-favorites")).close();
+    })
 
 }); //Ready
 let movieGrabbed = false;
@@ -271,6 +281,8 @@ let movieLink;
 let eventLink;
 let placeLink;
 
+let eventTime;
+
 let favMovies = [];
 let favEvents = [];
 let favPlaces = [];
@@ -286,6 +298,7 @@ $(document).on('dragstart', ".eventImg", function saveData (){
     eventId = $(this).attr("data-id")
     eventImg = $(this).attr("data-img")
     eventLink = $(this).attr("data-link")
+    eventTime = $(this).attr("data-time")
     eventGrabbed = true;
     console.log(eventName)
     console.log('working')
@@ -304,7 +317,7 @@ function drag(event){
 function allowDrop(event){
     event.preventDefault()
 }
-function dropEvent(event){
+function drop(event){
     event.preventDefault()
     if (movieGrabbed){
         favEvents.push(eventName);
@@ -314,6 +327,43 @@ function dropEvent(event){
         console.log('event drop')
         eventGrabbed = false;
         
+        let mainDiv = $("<div>");
+        mainDiv.addClass('bigDiv');
+
+        let cardDiv = $("<div>");
+        cardDiv.addClass('eventDiv card blue-grey darken-1 nextDiv');
+
+        let contentDiv = $("<div>");
+        contentDiv.addClass('card-content imgDiv');
+        
+        let spanTitle = $("<span>");
+        spanTitle.addClass('card-title');
+        spanTitle.text(eventName);
+
+        let eventImage = $("<img>");
+        eventImage.attr("src", eventImg);
+        eventImage.addClass('eventImg');   
+
+        let aDiv = $('<div>');
+        aDiv.addClass('card-action');
+
+        let ticketLink = $("<a>")
+        ticketLink.attr('href', eventLink);
+        ticketLink.attr('target', '_blank');
+        ticketLink.text('Ticket Link');
+
+        let timeDate = $("<p>");
+        timeDate.text(eventTime);
+
+        $("#fav-display").append(mainDiv);
+        $(mainDiv).append(cardDiv);
+        $(cardDiv).append(contentDiv);
+        $(contentDiv).append(spanTitle);
+        $(contentDiv).append(eventImage);
+        $(cardDiv).append(aDiv);
+        $(cardDiv).append(ticketLink);
+        $(cardDiv).append(timeDate);
+
     }else if(placeGrabbed){
         console.log('place drop')
         placeGrabbed = false;
@@ -326,12 +376,12 @@ console.log(favMovies)
 console.log(favEvents)
 console.log(favPlaces)
 
-for (let y = 0; y < favTopicsName.length; y++){
-    var newButton = $("<button>")
-    newButton.attr("data-name", favTopicsName[y]);
-    newButton.attr("data-ID", favTopicsID[y]);
-    newButton.addClass("favored btn btn-warning btn-outline-dark");
-    newButton.text(favTopicsName[y]);
-    $(".favorites").append(newButton)
-}
+// for (let y = 0; y < favTopicsName.length; y++){
+//     var newButton = $("<button>")
+//     newButton.attr("data-name", favTopicsName[y]);
+//     newButton.attr("data-ID", favTopicsID[y]);
+//     newButton.addClass("favored btn btn-warning btn-outline-dark");
+//     newButton.text(favTopicsName[y]);
+//     $(".favorites").append(newButton)
+// }
 }
