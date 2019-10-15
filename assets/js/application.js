@@ -129,6 +129,13 @@ $(document).ready(() => {
                         
                         let eventImage = $("<img>");
                         eventImage.attr("src", imageUrl);
+                        eventImage.attr('data-name', TM[a].name)
+                        eventImage.attr('data-id', TM[a].id)
+                        eventImage.attr('data-img', imageUrl)
+                        eventImage.attr('data-link', TM[a].url)
+                        eventImage.attr('ondragstart', "drag(event)")
+                        eventImage.attr('drgaggable', true)
+                        eventImage.attr("title", "Drag this to favorites to save for later");
                         eventImage.addClass('eventImg');   
                         
                         let aDiv = $('<div>');
@@ -268,11 +275,13 @@ $(document).on('dragstart', ".favMovieDrag", function saveData (){
     movieLink = $(this).attr("data-link")
 })
 
-$(document).on('dragstart', ".favEventDrag", function saveData (){
+$(document).on('dragstart', ".eventImg", function saveData (){
     eventName = $(this).attr("data-name")
     eventId = $(this).attr("data-id")
-    eventImg = $(this).attr("data-Img")
+    eventImg = $(this).attr("data-img")
     eventLink = $(this).attr("data-link")
+    console.log(eventName)
+    console.log('working')
 })
 
 $(document).on('dragstart', ".favPlaceDrag", function saveData (){
@@ -284,6 +293,7 @@ $(document).on('dragstart', ".favPlaceDrag", function saveData (){
 
 function drag(event){
 event.dataTransfer.setData("text", event.target.id);
+console.log(event.target.id)
 }
 
 
@@ -292,11 +302,10 @@ function allowDrop(event){
 event.preventDefault()
 }
 
-function drop(event){
+function dropEvent(event){
 event.preventDefault()
 $(".favorites").empty()
 
-favMovies.push(movieName)
 favEvents.push(eventName)
 favPlaces.push(placeName)
 console.log(favMovies)
