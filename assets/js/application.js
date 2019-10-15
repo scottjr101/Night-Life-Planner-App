@@ -32,7 +32,7 @@ $(document).ready(() => {
     var startDate = $("#start-date-input").val().trim();
     var zipCode = $("#zip-code-input").val().trim();
     var radius = $("#radius-input").val().trim();
-    var queryURL = "http://data.tmsapi.com/v1.1/movies/showings?startDate=" + startDate + "&zip=" + zipCode + "&radius=" + radius + "&api_key=h22mr6gbzmesjmx4jb5qt67b"
+    var queryURL = "https://data.tmsapi.com/v1.1/movies/showings?startDate=" + startDate + "&zip=" + zipCode + "&radius=" + radius + "&api_key=h22mr6gbzmesjmx4jb5qt67b"
 
     $.ajax({
       url: queryURL,
@@ -129,6 +129,13 @@ $(document).ready(() => {
                         
                         let eventImage = $("<img>");
                         eventImage.attr("src", imageUrl);
+                        eventImage.attr('data-name', TM[a].name)
+                        eventImage.attr('data-id', TM[a].id)
+                        eventImage.attr('data-img', imageUrl)
+                        eventImage.attr('data-link', TM[a].url)
+                        eventImage.attr('ondragstart', "drag(event)")
+                        eventImage.attr('drgaggable', true)
+                        eventImage.attr("title", "Drag this to favorites to save for later");
                         eventImage.addClass('eventImg');   
                         
                         let aDiv = $('<div>');
@@ -139,14 +146,15 @@ $(document).ready(() => {
                         ticketLink.attr('target', '_blank');
                         ticketLink.text('Ticket Link');
 
-                        let date = new Date(`${TM[a].dates.start.localDate}T${TM[a].dates.start.localTime}Z`);
-                        console.log(date)
+                        let date = new Date(`${TM[a].dates.start.localDate}T${TM[a].dates.start.localTime}Z`);                        
                         var newDate = date.toString('dd-MM-yy');
-                        let n = newDate.indexOf("GMT")            
-                        console.log(n)
+                        let n = newDate.indexOf("GMT") 
                         str = newDate.slice(0,n)
                         let timeDate = $("<p>");
                         timeDate.text(str);
+
+                        let eventType = $("<p>")
+                        eventType.text(TM[a].classifications[0].genre.name)
                         
                         
                         $("#local-events").append(mainDiv);
@@ -156,6 +164,7 @@ $(document).ready(() => {
                         $(contentDiv).append(eventImage);
                         $(cardDiv).append(ticketLink);
                         $(cardDiv).append(timeDate);
+                        $(cardDiv).append(eventType)
 
                         
                     }else{
@@ -174,7 +183,7 @@ $(document).ready(() => {
         
     });//click events
     $("#add-place-btn").click((barSearch)=>{
-
+        M.Modal.getInstance($("#modal-places")).close();
         barSearch.preventDefault();
 
         // Create search input and url variables
@@ -243,6 +252,10 @@ $(document).ready(() => {
   })
 
 }); //Ready
+let movieGrabbed = false;
+let eventGrabbed = false;
+let placeGrabbed = false;
+
 let eventName;
 let movieName;
 let placeName;
@@ -266,37 +279,47 @@ $(document).on('dragstart', ".favMovieDrag", function saveData (){
     movieName = $(this).attr("data-name")
     movieImg = $(this).attr("data-Img")
     movieLink = $(this).attr("data-link")
+    movieGrabbed = true;
 })
-
-$(document).on('dragstart', ".favEventDrag", function saveData (){
+$(document).on('dragstart', ".eventImg", function saveData (){
     eventName = $(this).attr("data-name")
     eventId = $(this).attr("data-id")
-    eventImg = $(this).attr("data-Img")
+    eventImg = $(this).attr("data-img")
     eventLink = $(this).attr("data-link")
+    eventGrabbed = true;
+    console.log(eventName)
+    console.log('working')
 })
-
 $(document).on('dragstart', ".favPlaceDrag", function saveData (){
     placeName = $(this).attr("data-name")
     placeId = $(this).attr("data-id")
     placeImg = $(this).attr("data-Img")
     placeLink = $(this).attr("data-link")
+    placeGrabbed = true;
 })
-
 function drag(event){
-event.dataTransfer.setData("text", event.target.id);
+    event.dataTransfer.setData("text", event.target.id);
+    console.log(event.target.id)
 }
-
-
-//need to find out how to define drop zone by id or class
 function allowDrop(event){
-event.preventDefault()
+    event.preventDefault()
 }
-
-function drop(event){
-event.preventDefault()
+function dropEvent(event){
+    event.preventDefault()
+    if (movieGrabbed){
+        favEvents.push(eventName);
+        console.log('movie drop')
+        movieGrabbed = false;
+    }else if(eventGrabbed){
+        console.log('event drop')
+        eventGrabbed = false;
+        
+    }else if(placeGrabbed){
+        console.log('place drop')
+        placeGrabbed = false;
+}
 $(".favorites").empty()
 
-favMovies.push(movieName)
 favEvents.push(eventName)
 favPlaces.push(placeName)
 console.log(favMovies)

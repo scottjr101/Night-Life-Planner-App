@@ -16,7 +16,7 @@
             
     </head>
   <body class="teal lighten-4">
-      <div class="navbar-fixed">
+      <div id="fav-drop" class="navbar-fixed" ondragover="allowDrop(event)" ondrop="drop(event)">
         <nav class="z-depth-0 teal lighten-2">
                 <div class="container">
                 <div class="nav-wrapper">
@@ -35,7 +35,7 @@
                             <a href="#" class="black-text modal-trigger" data-target="modal-places">Food/Drinks</a>
                         </li>
                       <li class="logged-in">
-                        <a href="#" class="grey-text text-lighten-2 modal-trigger" data-target="modal-account">Account</a>
+                        <a href="#" class="grey-text text-lighten-2 modal-trigger" data-target="modal-favorites">Favorites</a>
                       </li>
                       <li class="logged-out">
                         <a href="#" class="grey-text text-lighten-2 modal-trigger" data-target="modal-login">Login</a>
@@ -90,7 +90,7 @@
                 </div>
               </li>
               <li>
-                <img src="./assets/images/background-kissing-park.jpg">
+                <img src="./assets/images/background-movie-theater.jpg">
                 <div class="caption left-align">
                   <h2>Lorem ipsum dolor sit amet.</h2>
                   <h5 class="light grey-text text-lighten-3">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Error, sapiente.</h5>
@@ -104,7 +104,7 @@
                 </div>
               </li>
               <li>
-                <img src="./assets/images/background-familybowling.jpg">
+                <img src="./assets/images/background-bar-ornate.jpg">
                 <div class="caption center-align">
                   <h2>Lorem ipsum dolor sit amet.</h2>
                   <h5 class="light grey-text text-lighten-3">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tenetur quis fuga incidunt earum doloremque voluptates quia molestias. Cum, ipsa amet.</h5>
@@ -127,6 +127,17 @@
                         <label for="signup-password">Choose Password</label>
                     </div>
                     <button class="btn yellow darken-2 z-depth-0">Signup</button>
+                </form>
+            </div>
+        </div>
+    <!--Sign up modal-->
+        <div id="modal-favorites" class="modal">
+            <div class="modal-content">
+                <h4>Favorite events</h4><br>
+                <form action="" id="favorites-form">
+                    <div id="fav-display">
+                    </div>
+                    <button class="btn yellow darken-2 z-depth-0">Close</button>
                 </form>
             </div>
         </div>
@@ -224,7 +235,7 @@
               <div class="card-panel modal-trigger" id="modal-events" data-target="modal-events">
                 <i class="material-icons large teal-text">event</i>
                 <h4>Events</h4>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sint, rem!</p>
+                <p>Drag any event/movie or bar and drop it on the nav bar to save for later</p>
               </div>
             </div>
             <div class="col s12 m4">
