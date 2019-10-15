@@ -211,7 +211,7 @@ $(document).ready(() => {
           $("#local-events").empty();
           $("#view-places").empty();
           // Iterate through response array
-          for (var b = 0; b < 20; b++){
+          for (var b = 0; b < response.restaurants[b]; b++){
             // console.log(response.restaurants[b].restaurant.name);
             // create html element to hold desired response object data
             var display = $("<div class='bar-display'>");
