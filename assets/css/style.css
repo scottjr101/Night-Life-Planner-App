@@ -1,9 +1,9 @@
-body{
-    background-color: yellowgreen;
+/* body{
+    background-color: yellowgreen; 
     text-align: center;
-    background-image: url("../images/background-concert.jpg");
+    background-image: url("../images/background-kissing-park.jpg");
     background-size: 100%;
-}
+} */
 header{
     font-size: 500%;
     font-family: Arial, Helvetica, sans-serif;
@@ -20,13 +20,34 @@ header{
     text-align: center;
 }
 
-p {
-    padding: 0px 0px 0px 0px;
-    margin: 1px 1px 1px 1px;
+.bar-images{
+    display: flex;
+justify-content: center;
+align-items: center;
 }
-#infoboard {
+
+.bar-display {
+    height: 300px;
+    width: 230px; 
+    padding: 10px 10px 10px 10px;
+    display: inline-block;
+    background: grey;
+    overflow: auto;
+}
+
+#name-tag {
+    font-weight: 800;
+}
+
+.showArea {
+    width: 250px;
+    height: 400px;
+    overflow: scroll;
+    border: solid 1px black
+}
+/* #infoboard {
     background-color: cornflowerblue;
-}
+}  */
 
 /* Events */
 .eventImg{
@@ -54,4 +75,13 @@ p {
 
 .nextDiv {
     max-width: 400px;
+}
+.logo {
+    font-weight: bold;
+}
+.topLine {
+    text-shadow: 4px 2px cadetblue;
+}
+.section-follow .fa-4x {
+    margin: 10px 15px;
 }

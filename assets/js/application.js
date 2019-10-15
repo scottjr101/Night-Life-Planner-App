@@ -8,11 +8,21 @@
 // end of document ready
 //Materialize Modals
 $(document).on('DOMContentLoaded', () => {
+    
+    let modals = $('.modal');
+    M.Modal.init(modals);
 
-  let modals = $('.modal');
-  M.Modal.init(modals);
-
-});
+    let sideNav = $(".sidenav");
+    M.Sidenav.init(sideNav);
+    
+    let slider = $(".slider");
+    M.Slider.init(slider, {
+      indicators: false,
+      height: 350,
+      transition: 350,
+      interval: 6000
+    });
+    });
 $(document).ready(() => {
 
   $("#add-movie-btn").click((event) => {
@@ -72,7 +82,7 @@ $(document).ready(() => {
         console.log(TMstart);
         
         //the dmaId is the code ticket master uses for cities, 220 = atlanta 
-        let TMqueryURL = `https://app.ticketmaster.com${TMevents}.json?apikey=${TMapikey}&startDateTime=${TMstart}T08:00:00Z&endDateTime=${TMend}T23:00:00Z&city=${TMcity}&size=30`
+        let TMqueryURL = `https://app.ticketmaster.com${TMevents}.json?apikey=${TMapikey}&startDateTime=${TMstart}T08:00:00Z&endDateTime=${TMend}T23:00:00Z&city=${TMcity}&size=30&sort=date,asc`
         let eventNames = [];
         let eventData = [];
             $.ajax({
@@ -103,7 +113,7 @@ $(document).ready(() => {
                             }
                         }
                         let mainDiv = $("<div>");
-                        mainDiv.addClass('bigDiv')
+                        mainDiv.addClass('bigDiv');
 
                         let cardDiv = $("<div>");
                         cardDiv.addClass('eventDiv card blue-grey darken-1 nextDiv');
@@ -123,6 +133,20 @@ $(document).ready(() => {
                         
                         let aDiv = $('<div>');
                         aDiv.addClass('card-action');
+
+                        let ticketLink = $("<a>")
+                        ticketLink.attr('href', TM[a].url);
+                        ticketLink.attr('target', '_blank');
+                        ticketLink.text('Ticket Link');
+
+                        let date = new Date(`${TM[a].dates.start.localDate}T${TM[a].dates.start.localTime}Z`);
+                        console.log(date)
+                        var newDate = date.toString('dd-MM-yy');
+                        let n = newDate.indexOf("GMT")            
+                        console.log(n)
+                        str = newDate.slice(0,n)
+                        let timeDate = $("<p>");
+                        timeDate.text(str);
                         
                         
                         $("#local-events").append(mainDiv);
@@ -130,6 +154,8 @@ $(document).ready(() => {
                         $(cardDiv).append(contentDiv);
                         $(contentDiv).append(spanTitle);
                         $(contentDiv).append(eventImage);
+                        $(cardDiv).append(ticketLink);
+                        $(cardDiv).append(timeDate);
 
                         
                     }else{
@@ -150,16 +176,18 @@ $(document).ready(() => {
     $("#add-place-btn").click((barSearch)=>{
 
         barSearch.preventDefault();
-  
-        // var barKey = "user-key=56127d7074bb1c0676f5c2ffcf0456e7"
-        // var barQueryURL = "https://developers.zomato.com/api/v2.1/search?"
-        // var barCity = "&cities=Atlanta" 
-        // var barsPubs = "&catagories=11"
-  
-      // https://maps.googleapis.com/maps/api/place/textsearch/json?query=bars+in+Atlanta&key=AIzaSyCXm0BKxaJWjRRDLNk7WIgl-dXukR1iVSM
+
+        // Create search input and url variables
+
+// *REMINDER* Check doucmentation for more specific search parameters relating to location
+        var citySearch = $("#z-city-input").val().trim();
+        var keywordSearch = $("#z-keyword-input").val().trim();
+        // var zQueryURL = "https://developers.zomato.com/api/v2.1/search?q="+citySearch+"+"+keywordSearch+"&sort=rating&order=desc";
+
+        "https://developers.zomato.com/api/v2.1/search?entity_id=288&entity_type=city&q=bars+decatur&sort=rating&order=desc",
         
       $.ajax({  
-        url: "https://developers.zomato.com/api/v2.1/search?q=bars&count=40&sort=rating&order=desc",
+        url: "https://developers.zomato.com/api/v2.1/search?q="+citySearch+"+"+keywordSearch+"&sort=rating&order=desc",
         dataType: 'json',
         async: true,
         beforeSend: function(xhr){xhr.setRequestHeader('user-key', 
@@ -172,9 +200,36 @@ $(document).ready(() => {
           $("#view-places").empty();
           // Iterate through response array
           for (var b = 0; b < 20; b++){
-            // create html element to hold response object data
-            // var display = $("<div class='bar-search-results'>");
-            // var objectName = response[b].results_found;
+            // console.log(response.restaurants[b].restaurant.name);
+            // create html element to hold desired response object data
+            var display = $("<div class='bar-display'>");
+            // Establishment Name
+            var name = response.restaurants[b].restaurant.name;
+            var nameTag = $("<p id='name-tag'>").text(name);
+            // Type of Cuisine
+            var cuisine = response.restaurants[b].restaurant.cuisines;
+            var cuisineTag = $("<p>").html('<b>Cuisines: </b>' + cuisine);
+            // Address
+            var address = response.restaurants[b].restaurant.location.address;
+            var addressTag = $("<p>").html('<b>Address: </b>' + address);
+            // Rating
+            var rating = response.restaurants[b].restaurant.user_rating.aggregate_rating;
+            var ratingTag = $("<p>").html('<b>Rating: </b>' + rating);
+            // Phone Number
+            var phone = response.restaurants[b].restaurant.phone_numbers;
+            var phoneTag = $("<p>").html('<b>Phone: </b>' + phone);
+            // Establishment Image
+            var image = response.restaurants[b].restaurant.thumb;
+            var imageTag = $("<img class='bar-images'>");
+            imageTag.attr('src', image);
+            display.append(nameTag,ratingTag,"<br>",imageTag,cuisineTag,addressTag,phoneTag);
+            // Append display content to index
+            $("#view-places").append(display);
+
+
+
+            // console.log(response.restaurants[b].restaurant.thumb);
+            // console.log(response.restaurants[b].restaurant.location.locality);
           }
   
         
@@ -188,3 +243,72 @@ $(document).ready(() => {
   })
 
 }); //Ready
+let eventName;
+let movieName;
+let placeName;
+
+let eventId; 
+let placeId; 
+
+let movieImg;
+let eventImg;
+let placeImg;
+
+let movieLink;
+let eventLink;
+let placeLink;
+
+let favMovies = [];
+let favEvents = [];
+let favPlaces = [];
+// ===========DRAG & DROP ===========================
+$(document).on('dragstart', ".favMovieDrag", function saveData (){
+    movieName = $(this).attr("data-name")
+    movieImg = $(this).attr("data-Img")
+    movieLink = $(this).attr("data-link")
+})
+
+$(document).on('dragstart', ".favEventDrag", function saveData (){
+    eventName = $(this).attr("data-name")
+    eventId = $(this).attr("data-id")
+    eventImg = $(this).attr("data-Img")
+    eventLink = $(this).attr("data-link")
+})
+
+$(document).on('dragstart', ".favPlaceDrag", function saveData (){
+    placeName = $(this).attr("data-name")
+    placeId = $(this).attr("data-id")
+    placeImg = $(this).attr("data-Img")
+    placeLink = $(this).attr("data-link")
+})
+
+function drag(event){
+event.dataTransfer.setData("text", event.target.id);
+}
+
+
+//need to find out how to define drop zone by id or class
+function allowDrop(event){
+event.preventDefault()
+}
+
+function drop(event){
+event.preventDefault()
+$(".favorites").empty()
+
+favMovies.push(movieName)
+favEvents.push(eventName)
+favPlaces.push(placeName)
+console.log(favMovies)
+console.log(favEvents)
+console.log(favPlaces)
+
+for (let y = 0; y < favTopicsName.length; y++){
+    var newButton = $("<button>")
+    newButton.attr("data-name", favTopicsName[y]);
+    newButton.attr("data-ID", favTopicsID[y]);
+    newButton.addClass("favored btn btn-warning btn-outline-dark");
+    newButton.text(favTopicsName[y]);
+    $(".favorites").append(newButton)
+}
+}
