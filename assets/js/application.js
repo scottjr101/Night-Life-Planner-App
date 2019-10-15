@@ -304,7 +304,7 @@ function drag(event){
 function allowDrop(event){
     event.preventDefault()
 }
-function dropEvent(event){
+function drop(event){
     event.preventDefault()
     if (movieGrabbed){
         favEvents.push(eventName);
@@ -313,7 +313,12 @@ function dropEvent(event){
     }else if(eventGrabbed){
         console.log('event drop')
         eventGrabbed = false;
-        
+        let bigDiv = $("<div>")
+        let div = $("<div>")
+        $("#fav-display").append(bigDiv)
+        bigDiv.append(div)
+
+        div.text("working")
     }else if(placeGrabbed){
         console.log('place drop')
         placeGrabbed = false;
@@ -326,12 +331,12 @@ console.log(favMovies)
 console.log(favEvents)
 console.log(favPlaces)
 
-for (let y = 0; y < favTopicsName.length; y++){
-    var newButton = $("<button>")
-    newButton.attr("data-name", favTopicsName[y]);
-    newButton.attr("data-ID", favTopicsID[y]);
-    newButton.addClass("favored btn btn-warning btn-outline-dark");
-    newButton.text(favTopicsName[y]);
-    $(".favorites").append(newButton)
-}
+// for (let y = 0; y < favTopicsName.length; y++){
+//     var newButton = $("<button>")
+//     newButton.attr("data-name", favTopicsName[y]);
+//     newButton.attr("data-ID", favTopicsID[y]);
+//     newButton.addClass("favored btn btn-warning btn-outline-dark");
+//     newButton.text(favTopicsName[y]);
+//     $(".favorites").append(newButton)
+// }
 }
