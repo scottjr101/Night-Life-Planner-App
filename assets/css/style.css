@@ -45,9 +45,9 @@ p {
     overflow: scroll;
     border: solid 1px black
 }
-#infoboard {
-    /* background-color: cornflowerblue; */
-}
+/* #infoboard {
+    background-color: cornflowerblue;
+}  */
 
 /* Events */
 .eventImg{
