@@ -32,7 +32,7 @@ $(document).ready(() => {
     var startDate = $("#start-date-input").val().trim();
     var zipCode = $("#zip-code-input").val().trim();
     var radius = $("#radius-input").val().trim();
-    var queryURL = "http://data.tmsapi.com/v1.1/movies/showings?startDate=" + startDate + "&zip=" + zipCode + "&radius=" + radius + "&api_key=h22mr6gbzmesjmx4jb5qt67b"
+    var queryURL = "https://data.tmsapi.com/v1.1/movies/showings?startDate=" + startDate + "&zip=" + zipCode + "&radius=" + radius + "&api_key=h22mr6gbzmesjmx4jb5qt67b"
 
     $.ajax({
       url: queryURL,
