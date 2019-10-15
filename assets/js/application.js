@@ -153,6 +153,8 @@ $(document).ready(() => {
                         let timeDate = $("<p>");
                         timeDate.text(str);
 
+                        eventImage.attr('data-time', str)
+
                         let eventType = $("<p>")
                         eventType.text(TM[a].classifications[0].genre.name)
                         
@@ -162,9 +164,10 @@ $(document).ready(() => {
                         $(cardDiv).append(contentDiv);
                         $(contentDiv).append(spanTitle);
                         $(contentDiv).append(eventImage);
-                        $(cardDiv).append(ticketLink);
-                        $(cardDiv).append(timeDate);
-                        $(cardDiv).append(eventType)
+                        $(cardDiv).append(aDiv);
+                        $(aDiv).append(ticketLink);
+                        $(aDiv).append(timeDate);
+                        $(aDiv).append(eventType)
 
                         
                     }else{
@@ -248,8 +251,11 @@ $(document).ready(() => {
 
       
 
-    )
-  })
+        )
+    })
+    $("#fav-close").on('click', ()=>{
+    M.Modal.getInstance($("#modal-favorites")).close();
+    })
 
 }); //Ready
 let movieGrabbed = false;
@@ -271,6 +277,8 @@ let movieLink;
 let eventLink;
 let placeLink;
 
+let eventTime;
+
 let favMovies = [];
 let favEvents = [];
 let favPlaces = [];
@@ -286,6 +294,7 @@ $(document).on('dragstart', ".eventImg", function saveData (){
     eventId = $(this).attr("data-id")
     eventImg = $(this).attr("data-img")
     eventLink = $(this).attr("data-link")
+    eventTime = $(this).attr("data-time")
     eventGrabbed = true;
     console.log(eventName)
     console.log('working')
@@ -313,12 +322,44 @@ function drop(event){
     }else if(eventGrabbed){
         console.log('event drop')
         eventGrabbed = false;
-        let bigDiv = $("<div>")
-        let div = $("<div>")
-        $("#fav-display").append(bigDiv)
-        bigDiv.append(div)
+        
+        let mainDiv = $("<div>");
+        mainDiv.addClass('bigDiv');
 
-        div.text("working")
+        let cardDiv = $("<div>");
+        cardDiv.addClass('eventDiv card blue-grey darken-1 nextDiv');
+
+        let contentDiv = $("<div>");
+        contentDiv.addClass('card-content imgDiv');
+        
+        let spanTitle = $("<span>");
+        spanTitle.addClass('card-title');
+        spanTitle.text(eventName);
+
+        let eventImage = $("<img>");
+        eventImage.attr("src", eventImg);
+        eventImage.addClass('eventImg');   
+
+        let aDiv = $('<div>');
+        aDiv.addClass('card-action');
+
+        let ticketLink = $("<a>")
+        ticketLink.attr('href', eventLink);
+        ticketLink.attr('target', '_blank');
+        ticketLink.text('Ticket Link');
+
+        let timeDate = $("<p>");
+        timeDate.text(eventTime);
+
+        $("#fav-display").append(mainDiv);
+        $(mainDiv).append(cardDiv);
+        $(cardDiv).append(contentDiv);
+        $(contentDiv).append(spanTitle);
+        $(contentDiv).append(eventImage);
+        $(cardDiv).append(aDiv);
+        $(cardDiv).append(ticketLink);
+        $(cardDiv).append(timeDate);
+
     }else if(placeGrabbed){
         console.log('place drop')
         placeGrabbed = false;
