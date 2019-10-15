@@ -250,6 +250,10 @@ $(document).ready(() => {
   })
 
 }); //Ready
+let movieGrabbed = false;
+let eventGrabbed = false;
+let placeGrabbed = false;
+
 let eventName;
 let movieName;
 let placeName;
@@ -273,6 +277,7 @@ $(document).on('dragstart', ".favMovieDrag", function saveData (){
     movieName = $(this).attr("data-name")
     movieImg = $(this).attr("data-Img")
     movieLink = $(this).attr("data-link")
+    movieGrabbed = true;
 })
 
 $(document).on('dragstart', ".eventImg", function saveData (){
@@ -280,6 +285,7 @@ $(document).on('dragstart', ".eventImg", function saveData (){
     eventId = $(this).attr("data-id")
     eventImg = $(this).attr("data-img")
     eventLink = $(this).attr("data-link")
+    eventGrabbed = true;
     console.log(eventName)
     console.log('working')
 })
@@ -289,21 +295,34 @@ $(document).on('dragstart', ".favPlaceDrag", function saveData (){
     placeId = $(this).attr("data-id")
     placeImg = $(this).attr("data-Img")
     placeLink = $(this).attr("data-link")
+    placeGrabbed = true;
 })
 
 function drag(event){
-event.dataTransfer.setData("text", event.target.id);
-console.log(event.target.id)
+    event.dataTransfer.setData("text", event.target.id);
+    console.log(event.target.id)
 }
 
 
 //need to find out how to define drop zone by id or class
 function allowDrop(event){
-event.preventDefault()
+    event.preventDefault()
 }
 
 function dropEvent(event){
-event.preventDefault()
+    event.preventDefault()
+    if (movieGrabbed){
+        favEvents.push(eventName);
+        console.log('movie drop')
+        movieGrabbed = false;
+    }else if(eventGrabbed){
+        console.log('event drop')
+        eventGrabbed = false;
+        
+    }else if(placeGrabbed){
+        console.log('place drop')
+        placeGrabbed = false;
+}
 $(".favorites").empty()
 
 favEvents.push(eventName)
