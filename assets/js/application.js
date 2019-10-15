@@ -72,7 +72,7 @@ $(document).ready(() => {
         console.log(TMstart);
         
         //the dmaId is the code ticket master uses for cities, 220 = atlanta 
-        let TMqueryURL = `https://app.ticketmaster.com${TMevents}.json?apikey=${TMapikey}&startDateTime=${TMstart}T08:00:00Z&endDateTime=${TMend}T23:00:00Z&city=${TMcity}&size=30`
+        let TMqueryURL = `https://app.ticketmaster.com${TMevents}.json?apikey=${TMapikey}&startDateTime=${TMstart}T08:00:00Z&endDateTime=${TMend}T23:00:00Z&city=${TMcity}&size=30&sort=date,asc`
         let eventNames = [];
         let eventData = [];
             $.ajax({
@@ -215,3 +215,72 @@ $(document).ready(() => {
   })
 
 }); //Ready
+let eventName;
+let movieName;
+let placeName;
+
+let eventId; 
+let placeId; 
+
+let movieImg;
+let eventImg;
+let placeImg;
+
+let movieLink;
+let eventLink;
+let placeLink;
+
+let favMovies = [];
+let favEvents = [];
+let favPlaces = [];
+// ===========DRAG & DROP ===========================
+$(document).on('dragstart', ".favMovieDrag", function saveData (){
+    movieName = $(this).attr("data-name")
+    movieImg = $(this).attr("data-Img")
+    movieLink = $(this).attr("data-link")
+})
+
+$(document).on('dragstart', ".favEventDrag", function saveData (){
+    eventName = $(this).attr("data-name")
+    eventId = $(this).attr("data-id")
+    eventImg = $(this).attr("data-Img")
+    eventLink = $(this).attr("data-link")
+})
+
+$(document).on('dragstart', ".favPlaceDrag", function saveData (){
+    placeName = $(this).attr("data-name")
+    placeId = $(this).attr("data-id")
+    placeImg = $(this).attr("data-Img")
+    placeLink = $(this).attr("data-link")
+})
+
+function drag(event){
+event.dataTransfer.setData("text", event.target.id);
+}
+
+
+//need to find out how to define drop zone by id or class
+function allowDrop(event){
+event.preventDefault()
+}
+
+function drop(event){
+event.preventDefault()
+$(".favorites").empty()
+
+favMovies.push(movieName)
+favEvents.push(eventName)
+favPlaces.push(placeName)
+console.log(favMovies)
+console.log(favEvents)
+console.log(favPlaces)
+
+for (let y = 0; y < favTopicsName.length; y++){
+    var newButton = $("<button>")
+    newButton.attr("data-name", favTopicsName[y]);
+    newButton.attr("data-ID", favTopicsID[y]);
+    newButton.addClass("favored btn btn-warning btn-outline-dark");
+    newButton.text(favTopicsName[y]);
+    $(".favorites").append(newButton)
+}
+}
