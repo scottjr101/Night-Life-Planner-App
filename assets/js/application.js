@@ -113,7 +113,7 @@ $(document).ready(() => {
                             }
                         }
                         let mainDiv = $("<div>");
-                        mainDiv.addClass('bigDiv')
+                        mainDiv.addClass('bigDiv');
 
                         let cardDiv = $("<div>");
                         cardDiv.addClass('eventDiv card blue-grey darken-1 nextDiv');
@@ -134,15 +134,19 @@ $(document).ready(() => {
                         let aDiv = $('<div>');
                         aDiv.addClass('card-action');
 
-                        let ticketLink = $("<a>")
+                        let ticketLink = $("<a>");
                         ticketLink.attr('href', TM[a].url);
                         ticketLink.attr('target', '_blank');
                         ticketLink.text('Ticket Link');
 
-                        let date = new Date(TM[a].dates.start.dateTime);
-                        //let newDate = date.toString('dd-MM-yy');
+                        let date = new Date(`${TM[a].dates.start.localDate}T${TM[a].dates.start.localTime}Z`);
+                        console.log(date)
+                        var newDate = date.toString('dd-MM-yy');
+                        let n = newDate.indexOf("GMT")            
+                        console.log(n)
+                        str = newDate.slice(0,n)
                         let timeDate = $("<p>");
-                        timeDate.text(date);
+                        timeDate.text(str);
                         
                         
                         $("#local-events").append(mainDiv);
@@ -150,8 +154,8 @@ $(document).ready(() => {
                         $(cardDiv).append(contentDiv);
                         $(contentDiv).append(spanTitle);
                         $(contentDiv).append(eventImage);
-                        $(cardDiv).append(ticketLink)
-                        $(cardDiv).append(timeDate)
+                        $(cardDiv).append(ticketLink);
+                        $(cardDiv).append(timeDate);
 
                         
                     }else{
