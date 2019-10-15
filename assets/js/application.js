@@ -25,44 +25,53 @@ $(document).on('DOMContentLoaded', () => {
     });
 $(document).ready(() => {
 
-  $("#add-movie-btn").click((event) => {
+    $("#add-movie-btn").click((event) => {
 
-    event.preventDefault();
-
-    var startDate = $("#start-date-input").val().trim();
-    var zipCode = $("#zip-code-input").val().trim();
-    var radius = $("#radius-input").val().trim();
-    var queryURL = "https://data.tmsapi.com/v1.1/movies/showings?startDate=" + startDate + "&zip=" + zipCode + "&radius=" + radius + "&api_key=h22mr6gbzmesjmx4jb5qt67b"
-
-    $.ajax({
-      url: queryURL,
-      method: "GET"
-    }).then(function (response) {
-      console.log(response);
-      $("#movies-view").empty();
-      for (var i = 0; i < 100; i++) {
-        var div = $("<div class='movie_view'>");
-        var title = response[i].title;
-        var rating = response[i].ratings[0].code;
-        var p1 = $("<p>").text(title + ' rated: ' + rating);
-        div.append(p1);
-        var poster = "https://cuso.tmsimg.com/" + response[i].preferredImage.uri;
-        var image = $('<img>');
-        image.attr('src', poster);
-        div.append(image);
-        div.append('<br>');
-        var genres = response[i].genres;
-        var p2 = $("<p>").text('Genre(s): ' + genres);
-        div.append(p2);
-        var shortDescrip = response[i].shortDescription;
-        var p3 = $("<p>").text('plot: ' + shortDescrip);
-        div.append(p3);
-        div.append('<br>');
-        $("#movies-view").append(div);
-
-      };
-    });
-  });
+        M.Modal.getInstance($("#modal-movies")).close();
+        event.preventDefault();
+    
+        var startDate = $("#start-date-input").val().trim();
+        var zipCode = $("#zip-code-input").val().trim();
+        var radius = $("#radius-input").val().trim();
+        var queryURL = "https://data.tmsapi.com/v1.1/movies/showings?startDate=" + startDate + "&zip=" + zipCode + "&radius=" + radius + "&api_key=h22mr6gbzmesjmx4jb5qt67b"
+    
+        $.ajax({
+          url: queryURL,
+          method: "GET"
+        }).then(function (response) {
+          console.log(response);
+          $("#movies-view").empty();
+          for (var i = 0; i < 10; i++) {
+            var div = $("<div class='movie_view'>");
+            var title = response[i].title;
+            var p = $("<p>").text(title);
+            div.append(p);
+            var poster = "https://cuso.tmsimg.com/" + response[i].preferredImage.uri;
+            var image = $('<img>');
+            image.attr('src', poster);
+            div.append(image);
+            div.append('<br>');
+            var a = $("<a href='#' class='black-text modal-trigger'>");
+            a.attr('data-type', 'modal-' + [i]);
+            a.text("Click here for showtimes");
+            div.append(a);
+            var divModal = $("<div class='modal'>");
+            divModal.attr('id', 'modal-' + [i]);
+            divModal.text('Showtimes');
+            div.append(divModal);
+            $("#movies-view").append(div);
+          };
+    
+          var modal = function(){
+            $('.modal').modal();
+            M.Modal.init(modals);
+          };
+    
+          $(document).on("click", ".black-text modal-trigger", modal);
+    
+        });
+    
+      });
  
     $("#add-event-btn").click((ev)=>{
         
