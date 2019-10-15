@@ -58,3 +58,6 @@ p {
 .logo {
     font-weight: bold;
 }
+.topLine {
+    text-shadow: 4px 2px cadetblue;
+}
