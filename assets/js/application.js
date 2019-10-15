@@ -27,7 +27,13 @@ $(document).ready(() => {
 
     $("#add-movie-btn").click((event) => {
 
+        M.Modal.getInstance($("#modal-favorites")).close();
+
         event.preventDefault();
+        
+        $("#movies-view").empty();
+        $("#local-events").empty();
+        $("#view-places").empty();
     
         var startDate = $("#start-date-input").val().trim();
         var zipCode = $("#zip-code-input").val().trim();
@@ -73,6 +79,11 @@ $(document).ready(() => {
         M.Modal.getInstance($("#modal-events")).close();
 
         ev.preventDefault();
+
+        $("#movies-view").empty();
+        $("#local-events").empty();
+        $("#view-places").empty();
+
 
         const TMapikey = "f7iOI1K6ZSelrJQmQ9kZrXMGns1biEKR";
         const TMevents = "/discovery/v2/events";
@@ -190,8 +201,8 @@ $(document).ready(() => {
         
     });//click events
     $("#add-place-btn").click((barSearch)=>{
-        
-        M.Modal.getInstance($("#modal-favorites")).close();
+
+        M.Modal.getInstance($("#modal-places")).close();
 
         barSearch.preventDefault();
   
