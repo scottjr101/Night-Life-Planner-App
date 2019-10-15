@@ -15,29 +15,30 @@
         <link rel="stylesheet" href="./assets/css/style.css">
             
     </head>
-  <body>
+  <body class="teal lighten-4">
       <div class="navbar-fixed">
-        <nav class="z-depth-0 grey lighten-4">
+        <nav class="z-depth-0 teal lighten-2">
                 <div class="container">
-                  <!-- <a href="#" class="brand-logo">Nightlife Planner</a> -->
-                  <a href="" data-target="mobile-nav" class="sidenav-trigger">
-                    <i class="material-icons">Menu</i>
+                <div class="nav-wrapper">
+                  <a href="#" class="teal-text text-darken-2 logo">Nightlife Planner</a>
+                  <a href="#" data-target="mobile-nav" class="sidenav-trigger">
+                    <i class="material-icons">menu</i>
                   </a>
-                  <ul id="nav-mobile" class="right hide-on-med-and-down">
+                  <ul class="right hide-on-med-and-down">
                       <li class="logged-in">
-                        <a href="#" class="grey-text modal-trigger" data-target="modal-account">Account</a>
+                        <a href="#" class="black-text modal-trigger" data-target="modal-account">Account</a>
                       </li>
                       <li class="logged-in">
-                        <a href="#" class="grey-text" id="logout">Logout</a>
+                        <a href="#" class="black-text" id="logout">Logout</a>
                       </li>
                       <li class="logged-in">
-                            <a href="#" class="grey-text modal-trigger" data-target="modal-events">Events</a>
+                            <a href="#" class="black-text modal-trigger" data-target="modal-events">Events</a>
                         </li>
                       <li class="logged-in">
-                            <a href="#" class="grey-text modal-trigger" data-target="modal-movies">Movies</a>
+                            <a href="#" class="black-text modal-trigger" data-target="modal-movies">Movies</a>
                         </li>
                       <li class="logged-in">
-                            <a href="#" class="grey-text modal-trigger" data-target="modal-places">Bars & Clubs</a>
+                            <a href="#" class="black-text modal-trigger" data-target="modal-places">Bars & Clubs</a>
                         </li>
                       <li class="logged-out">
                         <a href="#" class="grey-text modal-trigger" data-target="modal-login">Login</a>
@@ -48,8 +49,67 @@
                     </span>
                   </ul>
                 </div>
+                </div>
               </nav>
       </div>
+
+      <ul id="mobile-nav" class="sidenav">
+          <li class="logged-in">
+            <a href="#" class="black-text modal-trigger" data-target="modal-account">Account</a>
+          </li>
+          <li class="logged-in">
+            <a href="#" class="black-text" id="logout">Logout</a>
+          </li>
+          <li class="logged-in">
+                <a href="#" class="black-text modal-trigger" data-target="modal-events">Events</a>
+            </li>
+          <li class="logged-in">
+                <a href="#" class="black-text modal-trigger" data-target="modal-movies">Movies</a>
+            </li>
+          <li class="logged-in">
+                <a href="#" class="black-text modal-trigger" data-target="modal-places">Bars & Clubs</a>
+            </li>
+          <li class="logged-out">
+            <a href="#" class="grey-text modal-trigger" data-target="modal-login">Login</a>
+          </li>
+          <li class="logged-out">
+            <a href="#" class="grey-text modal-trigger" data-target="modal-signup">Sign up</a>
+          </li>
+        </span>
+      </ul>
+      <section class="slider">
+          <ul class="slides">
+              <li>
+                <img src="./assets/images/background-concert.jpg">
+                <div class="caption center-align">
+                  <h2>Lorem ipsum dolor sit amet.</h2>
+                  <h5 class="light grey-text text-lighten-3">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempore, numquam.</h5>
+                </div>
+              </li>
+              <li>
+                <img src="./assets/images/background-kissing-park.jpg">
+                <div class="caption left-align">
+                  <h2>Lorem ipsum dolor sit amet.</h2>
+                  <h5 class="light grey-text text-lighten-3">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Error, sapiente.</h5>
+                </div>
+              </li>
+              <li>
+                <img src="./assets/images/background-groupfun.jpg">
+                <div class="caption right-align">
+                  <h2>Lorem ipsum dolor sit amet.</h2>
+                  <h5 class="light grey-text text-lighten-3">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Perferendis doloremque, atque alias neque cum omnis?</h5>
+                </div>
+              </li>
+              <li>
+                <img src="./assets/images/background-familybowling.jpg">
+                <div class="caption center-align">
+                  <h2>Lorem ipsum dolor sit amet.</h2>
+                  <h5 class="light grey-text text-lighten-3">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tenetur quis fuga incidunt earum doloremque voluptates quia molestias. Cum, ipsa amet.</h5>
+                </div>
+              </li>
+            </ul>
+      </section>
+
     <!--Sign up modal-->
         <div id="modal-signup" class="modal">
             <div class="modal-content">
@@ -152,7 +212,21 @@
         
       
     <!-- Optional JavaScript -->
-    <header class="header center teal-text">Plan Your Experience</header>
+    <header class="header center teal-text text-darken-2">Plan Your Experience</header>
+
+    <section class="section section-icon grey lighten-4 center">
+        <div class="container">
+          <div class="row">
+            <div class="col s12 m4">
+              <div class="card-panel">
+                <i class="material-icons large teal-text">room</i>
+                <h4>Events</h4>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sint, rem!</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
     <div id="movies-view"></div>
     <div id="local-events"></div>
@@ -161,7 +235,7 @@
       <div class="section no-pad-bot">
         <div class="container">
           <br><br>
-          <h1 class="header center teal-text text-lighten-2">Nightlife Planner</h1>
+          <h1 class="header center teal-text text-darken-2">Nightlife Planner</h1>
           <div class="row center">
             <h5 class="header col s12 light" id="infoboard">A modern way to plan your relaxation.</h5>
           </div>
