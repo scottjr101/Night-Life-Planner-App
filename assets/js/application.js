@@ -27,7 +27,6 @@ $(document).ready(() => {
 
     $("#add-movie-btn").click((event) => {
 
-        M.Modal.getInstance($("#modal-movies")).close();
         event.preventDefault();
     
         var startDate = $("#start-date-input").val().trim();
@@ -41,36 +40,32 @@ $(document).ready(() => {
         }).then(function (response) {
           console.log(response);
           $("#movies-view").empty();
-          for (var i = 0; i < 10; i++) {
+          for (var i = 0; i < 100; i++) {
+            var rootId = response[i].rootId;
+            if(rootId == 16200311 || rootId == 17093632 || rootId == 17427222 || rootId == 17162880 || rootId == 3543278 || rootId ==17396363  || rootId ==16075521  || rootId ==15758881  || rootId ==17310154  || rootId ==17416958  || rootId ==17473699  || rootId ==17431944  || rootId ==17468984  || rootId ==17356990  || rootId ==17416538  || rootId ==17411885  || rootId ==17442892   || rootId ==16578248) continue ;
             var div = $("<div class='movie_view'>");
             var title = response[i].title;
-            var p = $("<p>").text(title);
-            div.append(p);
+            var rating = response[i].ratings[0].code;
+            var p1 = $("<p>").text(title + ' rated: ' + rating);
+            div.append(p1);
             var poster = "https://cuso.tmsimg.com/" + response[i].preferredImage.uri;
             var image = $('<img>');
             image.attr('src', poster);
             div.append(image);
             div.append('<br>');
-            var a = $("<a href='#' class='black-text modal-trigger'>");
-            a.attr('data-type', 'modal-' + [i]);
-            a.text("Click here for showtimes");
-            div.append(a);
-            var divModal = $("<div class='modal'>");
-            divModal.attr('id', 'modal-' + [i]);
-            divModal.text('Showtimes');
-            div.append(divModal);
+            var genres = response[i].genres;
+            var p2 = $("<p>").text('Genre(s): ' + genres);
+            div.append(p2);
+            var shortDescrip = response[i].shortDescription;
+            var p3 = $("<p>").text('plot: ' + shortDescrip);
+            div.append(p3);
+            var actors = response[i].topCast;
+            var p4 = $("<p>").text('Cast: ' + actors);
+            div.append(p4);
             $("#movies-view").append(div);
+    
           };
-    
-          var modal = function(){
-            $('.modal').modal();
-            M.Modal.init(modals);
-          };
-    
-          $(document).on("click", ".black-text modal-trigger", modal);
-    
         });
-    
       });
  
     $("#add-event-btn").click((ev)=>{
