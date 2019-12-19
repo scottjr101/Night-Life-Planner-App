@@ -2,7 +2,7 @@
 
 Date planner
 
-<a href="https://fgailey.github.io/Group10/">Our deployed site</a>
+<a href="https://scottjr101.github.io/Night-Life-Planner-App/">Our deployed site</a>
 
 PARTS
 1: Function  
