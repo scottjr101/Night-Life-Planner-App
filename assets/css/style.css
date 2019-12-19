@@ -11,10 +11,12 @@ header{
     color: black;
 }
 .movie_view {
+    overflow: auto;
     padding: 10px 10px 10px 10px;
     display: inline-block;
-    height: 350px;
-    width: 300px;
+    height: 450px;
+    width: 400px;
+    color: white;
 }
 #movies-view {
     text-align: center;
@@ -22,16 +24,21 @@ header{
 
 .bar-images{
     display: flex;
-justify-content: center;
-align-items: center;
+    justify-content: center;
+    margin:auto;
+    align-items: center;
+}
+
+#view-places{
+    text-align: center;
 }
 
 .bar-display {
-    height: 300px;
-    width: 230px; 
+    height: 400px;
+    width: 300px; 
     padding: 10px 10px 10px 10px;
     display: inline-block;
-    background: grey;
+    color: white;
     overflow: auto;
 }
 
@@ -43,7 +50,7 @@ align-items: center;
     width: 250px;
     height: 400px;
     overflow: scroll;
-    border: solid 1px black
+    border: solid 1px black;
 }
 /* #infoboard {
     background-color: cornflowerblue;

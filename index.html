@@ -85,29 +85,22 @@
               <li>
                 <img src="./assets/images/background-concert.jpg">
                 <div class="caption center-align">
-                  <h2>Lorem ipsum dolor sit amet.</h2>
-                  <h5 class="light grey-text text-lighten-3">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempore, numquam.</h5>
+                  <h1>Events</h1>
+                  <h4 class="light grey-text text-lighten-3">Find where your favorite artist is preforming tonight!</h4>
                 </div>
               </li>
               <li>
                 <img src="./assets/images/background-movie-theater.jpg">
                 <div class="caption left-align">
-                  <h2>Lorem ipsum dolor sit amet.</h2>
-                  <h5 class="light grey-text text-lighten-3">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Error, sapiente.</h5>
-                </div>
-              </li>
-              <li>
-                <img src="./assets/images/background-groupfun.jpg">
-                <div class="caption right-align">
-                  <h2>Lorem ipsum dolor sit amet.</h2>
-                  <h5 class="light grey-text text-lighten-3">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Perferendis doloremque, atque alias neque cum omnis?</h5>
+                  <h1>Movies</h1>
+                  <h4 class="light grey-text text-lighten-3">Hey Movies</h4>
                 </div>
               </li>
               <li>
                 <img src="./assets/images/background-bar-ornate.jpg">
                 <div class="caption center-align">
-                  <h2>Lorem ipsum dolor sit amet.</h2>
-                  <h5 class="light grey-text text-lighten-3">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tenetur quis fuga incidunt earum doloremque voluptates quia molestias. Cum, ipsa amet.</h5>
+                  <h1>Food/Drinks</h1>
+                  <h4 class="light grey-text text-lighten-3">Hey Drinkss.</h4>
                 </div>
               </li>
             </ul>
@@ -137,7 +130,7 @@
                 <form action="" id="favorites-form">
                     <div id="fav-display">
                     </div>
-                    <button class="btn yellow darken-2 z-depth-0">Close</button>
+                    <button id="fav-close" class="btn yellow darken-2 z-depth-0">Close</button>
                 </form>
             </div>
         </div>
@@ -187,7 +180,7 @@
             <form id="movies-form">
                     <div class="input-field">
                             <label for="start-date-input">Start Date</label>
-                            <input class="form-control" id="start-date-input" placeholder="2019-10-08" type="text">
+                            <input class="form-control" id="start-date-input" placeholder="" type="date">
                     </div>
                     <div class="input-field">
                         <label for="zip-code-input">Zip Code</label>
@@ -217,9 +210,9 @@
                     </div>
                     <div class="input-field">
                         <label for="keyword-input">Keywords:</label>
-                        <input class="form-control" id="z-keyword-input" placeholder="10" type="text">
+                        <input class="form-control" id="z-keyword-input" placeholder="etc. Bar, Chinese, bbq" type="text">
                     </div>                        
-                        <button id="add-place-btn">Search</button>
+                        <button id="add-place-btn" class="modal-close btn yellow darken-2 z-depth-0">Search</button>
                     </form>
             </div>
         </div>
@@ -235,21 +228,18 @@
               <div class="card-panel modal-trigger" id="modal-events" data-target="modal-events">
                 <i class="material-icons large teal-text">event</i>
                 <h4>Events</h4>
-                <p>Drag any event/movie or bar and drop it on the nav bar to save for later</p>
               </div>
             </div>
             <div class="col s12 m4">
               <div class="card-panel modal-trigger" id="modal-movies" data-target="modal-movies">
                 <i class="material-icons large teal-text">theaters</i>
                 <h4>Movies</h4>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sint, rem!</p>
               </div>
             </div>
             <div class="col s12 m4">
               <div class="card-panel modal-trigger" id="modal-places" data-target="modal-places">
                 <i class="material-icons large teal-text">local_bar</i>
                 <h4>Food & Drinks</h4>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sint, rem!</p>
               </div>
             </div>
           </div>
