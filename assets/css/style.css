@@ -24,8 +24,9 @@ header{
 
 .bar-images{
     display: flex;
-justify-content: center;
-align-items: center;
+    justify-content: center;
+    margin:auto;
+    align-items: center;
 }
 
 #view-places{
@@ -33,11 +34,11 @@ align-items: center;
 }
 
 .bar-display {
-    height: 300px;
-    width: 230px; 
+    height: 400px;
+    width: 300px; 
     padding: 10px 10px 10px 10px;
     display: inline-block;
-    background: grey;
+    color: white;
     overflow: auto;
 }
 
