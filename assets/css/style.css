@@ -1,15 +1,10 @@
-/* body{
-    background-color: yellowgreen; 
-    text-align: center;
-    background-image: url("../images/background-kissing-park.jpg");
-    background-size: 100%;
-} */
-header{
+header {
     font-size: 500%;
     font-family: Arial, Helvetica, sans-serif;
     margin-top: 20px;
     color: black;
 }
+
 .movie_view {
     overflow: auto;
     padding: 10px 10px 10px 10px;
@@ -18,24 +13,23 @@ header{
     width: 400px;
     color: white;
 }
-#movies-view {
+
+#movies-view,
+#view-places,
+#local-events {
     text-align: center;
 }
 
-.bar-images{
+.bar-images {
     display: flex;
     justify-content: center;
-    margin:auto;
+    margin: auto;
     align-items: center;
-}
-
-#view-places{
-    text-align: center;
 }
 
 .bar-display {
     height: 400px;
-    width: 300px; 
+    width: 300px;
     padding: 10px 10px 10px 10px;
     display: inline-block;
     color: white;
@@ -52,29 +46,24 @@ header{
     overflow: scroll;
     border: solid 1px black;
 }
-/* #infoboard {
-    background-color: cornflowerblue;
-}  */
 
-/* Events */
-.eventImg{
+.eventImg {
     max-width: 300px;
 }
+
 .eventDiv {
     position: relative;
     text-align: center;
     color: white;
 }
+
 .eventInfo {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
-#local-events{
-    text-align: center;
 
-}
 .bigDiv {
     padding: 10px 10px 10px 10px;
     display: inline-block;
@@ -83,12 +72,15 @@ header{
 .nextDiv {
     max-width: 400px;
 }
+
 .logo {
     font-weight: bold;
 }
+
 .topLine {
     text-shadow: 4px 2px cadetblue;
 }
+
 .section-follow .fa-4x {
     margin: 10px 15px;
 }
