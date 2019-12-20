@@ -1,52 +1,32 @@
-# Group10
+# Nightlife Planner App
 
-Date planner
+**Creators**: `Scott Ladd`, `Bijan Dayani`, `Shane Miller`, and `Foster Gailey`
 
-<a href="https://scottjr101.github.io/Night-Life-Planner-App/">Our deployed site</a>
+**Created on**: `Oct 15th 2019`
 
-PARTS
-1: Function  
-2: API's  
-3: Features  
+- - -
 
-*************************
-FUNCTION
-*************************
+## ABOUT THE APP
+This app is all about helping the user decide what to do with their evening. So to get started they need to select "Events", "Movies"
+, or "Food/Drinks" from the navigation bar at the top of the page. Once they have filled out the required fields and submitted the 
+information, they need to scroll down to the bottom of the page to view their results. The Events page comes back with results from 
+the `Ticket Master` API. The Movies page shows us results from `Fandango` with the help of the `Gracenote` API. Finally, the 
+Food/Drinks page shows us results from the `Zomato` API.
+- - -
 
-1:1 Users can save plans for later with drag and drop
-1:2 Find Movies/Local Events/Food&Drinks all on one site
+## Deployed Site
 
+[Click Here](https://scottjr101.github.io/Night-Life-Planner-App/) to view it.
 
-*************************
-API's
-*************************
-2:1  Ticket Master 
-2:2  Zomato
-2:3  Gracenote
+![Nightlife Planner](./assets/images/NLP_screenshot.png)
 
+- - -
 
-**************************
-FEATURES
-**************************
-3:1 Allows search by City or Zipcode
-3:2 Find events by date
-3:3 Link to ticket of event
-3:4 Find all movies in your area
-
-***********************
-FUTURE UPDATES
-***********************
-4:1 Users can select and plan dates on set criteria  
-4:1 From price, location, and times  
-4:1 Save the plan for later and freely edit plan as you go  
-4:1 Share the plan with people   
-4:1 Allow others to work on the same plan 
-
-4:2  UNIQUE USERS   
-4:2  Allows users to create a unique sign in account  
-4:2  With unique account, allow user to create Date plan  
-4:2  Save and share plan with others  
-
-4:3  LOCATION SERVICES  
-4:3  Allows users to find events/restraunts/movies in their area  
-4:3  Give details on times and travel in plan 
+## TECHNOLOGIES USED
+* HTML
+* Materialize CSS
+* CSS
+* JQuery
+* Javascript
+* Git
+* GitHub
