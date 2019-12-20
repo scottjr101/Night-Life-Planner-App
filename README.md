@@ -18,7 +18,7 @@ Food/Drinks page shows us results from the `Zomato` API.
 
 [Click Here](https://scottjr101.github.io/Night-Life-Planner-App/) to view it.
 
-![Nightlife Planner](./assets/images/NLP_screenshot.png)
+![Nightlife Planner](assets/images/NLP-screenshot.png)
 
 - - -
 
